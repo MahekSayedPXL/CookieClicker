@@ -1,0 +1,82 @@
+﻿<Window x:Class="BlackJack.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BlackJack"
+        mc:Ignorable="d"
+        Title="BlackJack" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.Background>
+            <ImageBrush ImageSource="/background.jpg" />
+        </Grid.Background>
+        <StackPanel VerticalAlignment="Center">
+            <DockPanel HorizontalAlignment="Center">
+                <Label Content="Cookies: 0" FontSize="25" FontWeight="Bold" Foreground="White"/>
+            </DockPanel>
+            <Image Source="/cookie-removebg-preview.png"/>
+        </StackPanel>
+        <Border Grid.Column="1" Background="White">
+            <Label Content="Cookie Clicker" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"/>
+        </Border>
+        <StackPanel Grid.Column="2" VerticalAlignment="Center" Background="#FFD26A90" d:IsLocked="True" >
+            <Label Content="Store" Height="50" FontSize="25" HorizontalAlignment="Center" />
+            <Label Content="+0.0"/>
+            <Button Height="50">
+                <DockPanel>
+                    <Image DockPanel.Dock="Left" Source="/cursor-removebg-preview (1).png"/>
+                    <StackPanel>
+                        <Label Content="Cursor"/>
+                        <Label Content="15" DockPanel.Dock="Bottom"/>
+                    </StackPanel>
+                    <Label Content="0" DockPanel.Dock="Right"/>
+                </DockPanel>
+            </Button>
+            <Button Height="50">
+                <DockPanel>
+                    <Image Source="/grandma-removebg-preview.png" DockPanel.Dock="Left"/>
+                    <StackPanel>
+                        <Label Content="Grandma"/>
+                        <Label Content="100" DockPanel.Dock="Bottom"/>
+                    </StackPanel>
+                    <Label Content="0" DockPanel.Dock="Right"/>
+                </DockPanel>
+            </Button>
+            <Button Height="50">
+                <DockPanel>
+                    <Image Source="/farm.jpg" DockPanel.Dock="Left"/>
+                    <StackPanel>
+                        <Label Content="Farm"/>
+                        <Label Content="1100" DockPanel.Dock="Bottom"/>
+                    </StackPanel>
+                    <Label Content="0" DockPanel.Dock="Right"/>
+                </DockPanel>
+            </Button>
+            <Button Height="50">
+                <DockPanel>
+                    <Image Source="/mine-removebg-preview.png" DockPanel.Dock="Left"/>
+                    <StackPanel>
+                        <Label Content="Mine"/>
+                        <Label Content="12000" DockPanel.Dock="Bottom"/>
+                    </StackPanel>
+                    <Label Content="0" DockPanel.Dock="Right"/>
+                </DockPanel>
+            </Button>
+            <Button Height="50">
+                <DockPanel>
+                    <Image  DockPanel.Dock="Left" Source="/factory-removebg-preview.png"/>
+                    <StackPanel>
+                        <Label Content="Factory"/>
+                        <Label Content="130000" DockPanel.Dock="Bottom"/>
+                    </StackPanel>
+                    <Label Content="0" DockPanel.Dock="Right"/>
+                </DockPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>
