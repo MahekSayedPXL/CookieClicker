@@ -29,52 +29,52 @@
             <Label Content="+0.0"/>
             <Button Height="50">
                 <DockPanel>
-                    <Image DockPanel.Dock="Left" Source="/cursor-removebg-preview (1).png"/>
+                    <Image Source="/cursor-removebg-preview (1).png" Width="50"/>
                     <StackPanel>
-                        <Label Content="Cursor"/>
-                        <Label Content="15" DockPanel.Dock="Bottom"/>
+                        <Label Content="Cursor"  Width="180" HorizontalContentAlignment="Center"/>
+                        <Label Content="15"/>
                     </StackPanel>
-                    <Label Content="0" DockPanel.Dock="Right"/>
+                    <Label Content="0" FontSize="25" HorizontalAlignment="Right"/>
                 </DockPanel>
             </Button>
             <Button Height="50">
                 <DockPanel>
-                    <Image Source="/grandma-removebg-preview.png" DockPanel.Dock="Left"/>
+                    <Image Source="/grandma-removebg-preview.png" Width="50"/>
                     <StackPanel>
-                        <Label Content="Grandma"/>
-                        <Label Content="100" DockPanel.Dock="Bottom"/>
+                        <Label Content="Grandma"  Width="180" HorizontalContentAlignment="Center"/>
+                        <Label Content="100"/>
                     </StackPanel>
-                    <Label Content="0" DockPanel.Dock="Right"/>
+                    <Label Content="0" FontSize="25" HorizontalAlignment="Right"/>
                 </DockPanel>
             </Button>
             <Button Height="50">
                 <DockPanel>
-                    <Image Source="/farm.jpg" DockPanel.Dock="Left"/>
+                    <Image Source="/farm.jpg" Width="50"/>
                     <StackPanel>
-                        <Label Content="Farm"/>
+                        <Label Content="Farm" Width="180" HorizontalContentAlignment="Center"/>
                         <Label Content="1100" DockPanel.Dock="Bottom"/>
                     </StackPanel>
-                    <Label Content="0" DockPanel.Dock="Right"/>
+                    <Label Content="0" FontSize="25" HorizontalAlignment="Right"/>
                 </DockPanel>
             </Button>
             <Button Height="50">
                 <DockPanel>
-                    <Image Source="/mine-removebg-preview.png" DockPanel.Dock="Left"/>
+                    <Image Source="/mine-removebg-preview.png" Width="50"/>
                     <StackPanel>
-                        <Label Content="Mine"/>
+                        <Label Content="Mine" Width="180" HorizontalContentAlignment="Center"/>
                         <Label Content="12000" DockPanel.Dock="Bottom"/>
                     </StackPanel>
-                    <Label Content="0" DockPanel.Dock="Right"/>
+                    <Label Content="0"  FontSize="25" HorizontalAlignment="Right"/>
                 </DockPanel>
             </Button>
             <Button Height="50">
                 <DockPanel>
-                    <Image  DockPanel.Dock="Left" Source="/factory-removebg-preview.png"/>
+                    <Image Source="/factory-removebg-preview.png" Width="50"/>
                     <StackPanel>
-                        <Label Content="Factory"/>
+                        <Label Content="Factory" Width="180" HorizontalContentAlignment="Center"/>
                         <Label Content="130000" DockPanel.Dock="Bottom"/>
                     </StackPanel>
-                    <Label Content="0" DockPanel.Dock="Right"/>
+                    <Label Content="0" FontSize="25" HorizontalAlignment="Right"/>
                 </DockPanel>
             </Button>
         </StackPanel>
