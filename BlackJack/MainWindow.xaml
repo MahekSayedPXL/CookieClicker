@@ -28,7 +28,7 @@
         <StackPanel Grid.Column="2" VerticalAlignment="Center" Background="#FFD26A90" d:IsLocked="True" >
             <Label Content="Store" Height="50" FontSize="25" HorizontalAlignment="Center" />
             <Label Content="+0.0"/>
-            <Button Name="btnCursor" Height="50" IsEnabled="False">
+            <Button Name="btnCursor" Height="50" Click="btnBuy_Click">
                 <DockPanel>
                     <Image Source="/cursor-removebg-preview (1).png" Width="50"/>
                     <StackPanel>
@@ -38,7 +38,7 @@
                     <Label Content="0" FontSize="25" HorizontalAlignment="Right"/>
                 </DockPanel>
             </Button>
-            <Button Name="btnGrandma" Height="50" IsEnabled="False">
+            <Button Name="btnGrandma" Height="50" Click="btnBuy_Click">
                 <DockPanel>
                     <Image Source="/grandma-removebg-preview.png" Width="50"/>
                     <StackPanel>
@@ -48,7 +48,7 @@
                     <Label Content="0" FontSize="25" HorizontalAlignment="Right"/>
                 </DockPanel>
             </Button>
-            <Button Name="btnFarm" Height="50" IsEnabled="False">
+            <Button Name="btnFarm" Height="50" Click="btnBuy_Click">
                 <DockPanel>
                     <Image Source="/farm.jpg" Width="50"/>
                     <StackPanel>
@@ -58,7 +58,7 @@
                     <Label Content="0" FontSize="25" HorizontalAlignment="Right"/>
                 </DockPanel>
             </Button>
-            <Button Name="btnMine" Height="50" IsEnabled="False">
+            <Button Name="btnMine" Height="50" Click="btnBuy_Click">
                 <DockPanel>
                     <Image Source="/mine-removebg-preview.png" Width="50"/>
                     <StackPanel>
@@ -68,7 +68,7 @@
                     <Label Content="0"  FontSize="25" HorizontalAlignment="Right"/>
                 </DockPanel>
             </Button>
-            <Button Name="btnFactory" Height="50" IsEnabled="False">
+            <Button Name="btnFactory" Height="50" Click="btnBuy_Click">
                 <DockPanel>
                     <Image Source="/factory-removebg-preview.png" Width="50"/>
                     <StackPanel>

@@ -22,11 +22,11 @@ namespace BlackJack
     {
         float score = 0;
 
-        int cursorCost = 15;
-        int grandmaCost = 100;
-        int farmCost = 1100;
-        int mineCost = 12000;
-        int factoryCost = 130000;
+        int cursorCost = 5;
+        int grandmaCost = 10;
+        int farmCost = 15;
+        int mineCost = 20;
+        int factoryCost = 25;
 
         public MainWindow()
         {
@@ -46,6 +46,7 @@ namespace BlackJack
             {
                 imgCookie.Height += 10;
             }
+
             UpdateScoreText();
             UpdateButtonStatus();
         }
@@ -71,26 +72,77 @@ namespace BlackJack
 
         private void UpdateButtonStatus()
         {
+            btnCursor.IsEnabled = false;
+            btnGrandma.IsEnabled = false;
+            btnFarm.IsEnabled = false;
+            btnMine.IsEnabled = false;
+            btnFactory.IsEnabled = false;
+
+            // Enable buttons based on score
             if (score >= cursorCost)
             {
                 btnCursor.IsEnabled = true;
             }
             if (score >= grandmaCost)
             {
-                btnCursor.IsEnabled = true;
+                btnGrandma.IsEnabled = true;
             }
             if (score >= farmCost)
             {
-                btnCursor.IsEnabled = true;
+                btnFarm.IsEnabled = true;
             }
             if (score >= mineCost)
             {
-                btnCursor.IsEnabled = true;
+                btnMine.IsEnabled = true;
             }
             if (score >= factoryCost)
             {
-                btnCursor.IsEnabled = true;
+                btnFactory.IsEnabled = true;
             }
+        }
+
+        private void btnBuy_Click(object sender, RoutedEventArgs e)
+        {
+            Button clickedButton = (Button)sender;
+
+            switch (clickedButton.Name)
+            {
+                case "btnCursor":
+                    if (score >= cursorCost)
+                    {
+                        score -= cursorCost;
+                    }
+                    break;
+                case "btnGrandma":
+                    if (score >= grandmaCost)
+                    {
+                        score -= grandmaCost;
+                    }
+                    break;
+                case "btnFarm":    
+                    if (score >= farmCost)
+                    {
+                        score -= farmCost;
+                    }
+                    break;
+                case "btnMine":
+                    if (score >= mineCost)
+                    {
+                        score -= mineCost;
+                    }
+                    break;
+                case "btnFactory":
+                    if (score >= factoryCost)
+                    {
+                        score -= factoryCost;
+                    }
+                    break;
+                default:
+                    break;
+            }
+            
+            UpdateScoreText();
+            UpdateButtonStatus();
         }
     }
 }
