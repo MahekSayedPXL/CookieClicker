@@ -20,37 +20,45 @@ namespace BlackJack
     /// </summary>
     public partial class MainWindow : Window
     {
-        int score = 0;
+        float score = 0;
+
+        int cursorCost = 15;
+        int grandmaCost = 100;
+        int farmCost = 1100;
+        int mineCost = 12000;
+        int factoryCost = 130000;
 
         public MainWindow()
         {
             InitializeComponent();
             UpdateScoreText();
+            UpdateButtonStatus();
         }
 
         private void CookiePress_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            if (imgCookie.Width < ActualWidth)
+            if (imgCookie.Width < 260)
             {
                 imgCookie.Width += 10;
             }
 
-            if (imgCookie.Height < ActualWidth)
+            if (imgCookie.Height < 260)
             {
                 imgCookie.Height += 10;
             }
             UpdateScoreText();
+            UpdateButtonStatus();
         }
 
         private void CookieLose_MouseDown(object sender, MouseButtonEventArgs e)
         {
             score += 1;
-            if (imgCookie.Width > ActualWidth)
+            if (imgCookie.Width > 250)
             {
                 imgCookie.Width -= 10;
             }
 
-            if (imgCookie.Height > ActualWidth)
+            if (imgCookie.Height > 250)
             {
                 imgCookie.Height -= 10;
             }
@@ -59,6 +67,30 @@ namespace BlackJack
         private void UpdateScoreText()
         {
             lblScore.Content = score.ToString();
+        }
+
+        private void UpdateButtonStatus()
+        {
+            if (score >= cursorCost)
+            {
+                btnCursor.IsEnabled = true;
+            }
+            if (score >= grandmaCost)
+            {
+                btnCursor.IsEnabled = true;
+            }
+            if (score >= farmCost)
+            {
+                btnCursor.IsEnabled = true;
+            }
+            if (score >= mineCost)
+            {
+                btnCursor.IsEnabled = true;
+            }
+            if (score >= factoryCost)
+            {
+                btnCursor.IsEnabled = true;
+            }
         }
     }
 }
