@@ -20,9 +20,45 @@ namespace BlackJack
     /// </summary>
     public partial class MainWindow : Window
     {
+        int score = 0;
+
         public MainWindow()
         {
             InitializeComponent();
+            UpdateScoreText();
+        }
+
+        private void CookiePress_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (imgCookie.Width < ActualWidth)
+            {
+                imgCookie.Width += 10;
+            }
+
+            if (imgCookie.Height < ActualWidth)
+            {
+                imgCookie.Height += 10;
+            }
+            UpdateScoreText();
+        }
+
+        private void CookieLose_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            score += 1;
+            if (imgCookie.Width > ActualWidth)
+            {
+                imgCookie.Width -= 10;
+            }
+
+            if (imgCookie.Height > ActualWidth)
+            {
+                imgCookie.Height -= 10;
+            }
+        }
+
+        private void UpdateScoreText()
+        {
+            lblScore.Content = score.ToString();
         }
     }
 }

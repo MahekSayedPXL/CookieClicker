@@ -17,12 +17,13 @@
         </Grid.Background>
         <StackPanel VerticalAlignment="Center">
             <DockPanel HorizontalAlignment="Center">
-                <Label Content="Cookies: 0" FontSize="25" FontWeight="Bold" Foreground="White"/>
+                <Label Content="Cookies: " FontSize="25" FontWeight="Bold" Foreground="White"/>
+                <Label Name="lblScore" Content="0" FontSize="25" FontWeight="Bold" Foreground="White"/>
             </DockPanel>
-            <Image Source="/cookie-removebg-preview.png"/>
+            <Image Name="imgCookie" Source="/cookie-removebg-preview.png" Width="260" Height="260" MouseUp="CookiePress_MouseUp" MouseDown="CookieLose_MouseDown"/>
         </StackPanel>
         <Border Grid.Column="1" Background="White">
-            <Label Content="Cookie Clicker" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"/>
+            <Label Content="Cookie Clicker" HorizontalAlignment="Center" FontWeight="Bold" FontSize="30" Foreground="#FFD26A90"/>
         </Border>
         <StackPanel Grid.Column="2" VerticalAlignment="Center" Background="#FFD26A90" d:IsLocked="True" >
             <Label Content="Store" Height="50" FontSize="25" HorizontalAlignment="Center" />
