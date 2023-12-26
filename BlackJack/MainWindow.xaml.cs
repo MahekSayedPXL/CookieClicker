@@ -22,11 +22,18 @@ namespace BlackJack
     {
         float score = 0;
 
-        int cursorCost = 5;
+        int cursorCost = 15;
         int grandmaCost = 10;
         int farmCost = 15;
         int mineCost = 20;
         int factoryCost = 25;
+
+        int cursorCount = 0;
+        int grandmaCount = 0;
+        int farmCount = 0;
+        int mineCount = 0;
+        int factoryCount = 0;
+
 
         public MainWindow()
         {
@@ -54,6 +61,7 @@ namespace BlackJack
         private void CookieLose_MouseDown(object sender, MouseButtonEventArgs e)
         {
             score += 1;
+
             if (imgCookie.Width > 250)
             {
                 imgCookie.Width -= 10;
@@ -111,30 +119,50 @@ namespace BlackJack
                     if (score >= cursorCost)
                     {
                         score -= cursorCost;
+                        cursorCount++;
+                        lblNumberOfCursor.Content = cursorCount.ToString();
+                        cursorCost = CalculateCost(cursorCount, cursorCost);
+                        lblCursorCost.Content = cursorCost.ToString();
                     }
                     break;
                 case "btnGrandma":
                     if (score >= grandmaCost)
                     {
                         score -= grandmaCost;
+                        grandmaCount++;
+                        lblNumberOfGrandma.Content = grandmaCount.ToString();
+                        grandmaCost = CalculateCost(grandmaCount, grandmaCost);
+                        lblGrandmaCost.Content = grandmaCost.ToString();
                     }
                     break;
                 case "btnFarm":    
                     if (score >= farmCost)
                     {
                         score -= farmCost;
+                        farmCount++;
+                        lblNumberOfFarm.Content = farmCount.ToString();
+                        farmCost = CalculateCost(farmCount, farmCost);
+                        lblFarmCost.Content = farmCost.ToString();
                     }
                     break;
                 case "btnMine":
                     if (score >= mineCost)
                     {
                         score -= mineCost;
+                        mineCount++;
+                        lblNumberOfMine.Content = mineCount.ToString();
+                        mineCost = CalculateCost(mineCount, mineCost);
+                        lblMineCost.Content = mineCost.ToString();
                     }
                     break;
                 case "btnFactory":
                     if (score >= factoryCost)
                     {
                         score -= factoryCost;
+                        factoryCount++;
+                        lblNumberOfFactory.Content = factoryCount.ToString();
+                        factoryCost = CalculateCost(factoryCount, factoryCost);
+                        lblFactoryCost.Content = factoryCost.ToString();
                     }
                     break;
                 default:
@@ -143,6 +171,12 @@ namespace BlackJack
             
             UpdateScoreText();
             UpdateButtonStatus();
+        }
+
+        private int CalculateCost(int count, int basicCost)
+        {
+            double result = basicCost * Math.Pow(1.15, count);
+            return (int)Math.Ceiling(result);
         }
     }
 }

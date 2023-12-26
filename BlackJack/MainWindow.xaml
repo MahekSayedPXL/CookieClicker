@@ -33,9 +33,9 @@
                     <Image Source="/cursor-removebg-preview (1).png" Width="50"/>
                     <StackPanel>
                         <Label Content="Cursor"  Width="180" HorizontalContentAlignment="Center"/>
-                        <Label Content="15"/>
+                        <Label Name="lblCursorCost" Content="15"/>
                     </StackPanel>
-                    <Label Content="0" FontSize="25" HorizontalAlignment="Right"/>
+                    <Label Name="lblNumberOfCursor" Content="0" FontSize="25" HorizontalAlignment="Right"/>
                 </DockPanel>
             </Button>
             <Button Name="btnGrandma" Height="50" Click="btnBuy_Click">
@@ -43,9 +43,9 @@
                     <Image Source="/grandma-removebg-preview.png" Width="50"/>
                     <StackPanel>
                         <Label Content="Grandma"  Width="180" HorizontalContentAlignment="Center"/>
-                        <Label Content="100"/>
+                        <Label Name="lblGrandmaCost" Content="100"/>
                     </StackPanel>
-                    <Label Content="0" FontSize="25" HorizontalAlignment="Right"/>
+                    <Label Name="lblNumberOfGrandma" Content="0" FontSize="25" HorizontalAlignment="Right"/>
                 </DockPanel>
             </Button>
             <Button Name="btnFarm" Height="50" Click="btnBuy_Click">
@@ -53,9 +53,9 @@
                     <Image Source="/farm.jpg" Width="50"/>
                     <StackPanel>
                         <Label Content="Farm" Width="180" HorizontalContentAlignment="Center"/>
-                        <Label Content="1100" DockPanel.Dock="Bottom"/>
+                        <Label Name="lblFarmCost" Content="1100" DockPanel.Dock="Bottom"/>
                     </StackPanel>
-                    <Label Content="0" FontSize="25" HorizontalAlignment="Right"/>
+                    <Label Name="lblNumberOfFarm" Content="0" FontSize="25" HorizontalAlignment="Right"/>
                 </DockPanel>
             </Button>
             <Button Name="btnMine" Height="50" Click="btnBuy_Click">
@@ -63,9 +63,9 @@
                     <Image Source="/mine-removebg-preview.png" Width="50"/>
                     <StackPanel>
                         <Label Content="Mine" Width="180" HorizontalContentAlignment="Center"/>
-                        <Label Content="12000" DockPanel.Dock="Bottom"/>
+                        <Label Name="lblMineCost" Content="12000" DockPanel.Dock="Bottom"/>
                     </StackPanel>
-                    <Label Content="0"  FontSize="25" HorizontalAlignment="Right"/>
+                    <Label Name="lblNumberOfMine" Content="0"  FontSize="25" HorizontalAlignment="Right"/>
                 </DockPanel>
             </Button>
             <Button Name="btnFactory" Height="50" Click="btnBuy_Click">
@@ -73,9 +73,9 @@
                     <Image Source="/factory-removebg-preview.png" Width="50"/>
                     <StackPanel>
                         <Label Content="Factory" Width="180" HorizontalContentAlignment="Center"/>
-                        <Label Content="130000" DockPanel.Dock="Bottom"/>
+                        <Label Name="lblFactoryCost" Content="130000" DockPanel.Dock="Bottom"/>
                     </StackPanel>
-                    <Label Content="0" FontSize="25" HorizontalAlignment="Right"/>
+                    <Label Name="lblNumberOfFactory" Content="0" FontSize="25" HorizontalAlignment="Right"/>
                 </DockPanel>
             </Button>
         </StackPanel>
