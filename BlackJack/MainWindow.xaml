@@ -27,7 +27,7 @@
         </Border>
         <StackPanel Grid.Column="2" VerticalAlignment="Center" Background="#FFD26A90" d:IsLocked="True" >
             <Label Content="Store" Height="50" FontSize="25" HorizontalAlignment="Center" />
-            <Label Content="+0.0"/>
+            <Label Name="lblCookiesPerSec" Content="0.0"/>
             <Button Name="btnCursor" Height="50" Click="btnBuy_Click">
                 <DockPanel>
                     <Image Source="/cursor-removebg-preview (1).png" Width="50"/>

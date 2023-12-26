@@ -46,7 +46,7 @@ namespace BlackJack
             UpdateButtonStatus();
 
             incomeTimer = new DispatcherTimer();
-            incomeTimer.Tick += new EventHandler(IncomeTimer_Tick);
+            incomeTimer.Tick += IncomeTimer_Tick;
             incomeTimer.Interval = TimeSpan.FromMilliseconds(10);
             incomeTimer.Start();
         }
@@ -191,8 +191,8 @@ namespace BlackJack
 
         private void IncomeTimer_Tick(object sender, EventArgs e)
         {
+            UpdatePassiveIncome();
             score += passiveIncome * 0.01f;
-            score = (float)Math.Round(score, 2);
 
             UpdateScoreText();
             UpdateButtonStatus();
@@ -201,10 +201,14 @@ namespace BlackJack
         private void UpdatePassiveIncome()
         {
             passiveIncome = cursorCount * 0.001f +
-                            grandmaCount * 0.01f +
-                            farmCount * 0.08f +
-                            mineCount * 0.47f +
-                            factoryCount * 2.60f;
+                                  grandmaCount * 0.01f +
+                                  farmCount * 0.08f +
+                                  mineCount * 0.47f +
+                                  factoryCount * 2.60f;
+
+            passiveIncome = (float)Math.Round(passiveIncome, 2);
+
+            lblCookiesPerSec.Content = passiveIncome.ToString("0.00");
         }
     }
 }
