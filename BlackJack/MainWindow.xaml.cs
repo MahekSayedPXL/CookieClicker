@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace BlackJack
 {
@@ -20,6 +21,9 @@ namespace BlackJack
     /// </summary>
     public partial class MainWindow : Window
     {
+        private float passiveIncome = 0.0f;
+        private DispatcherTimer incomeTimer;
+
         float score = 0;
 
         int cursorCost = 15;
@@ -40,6 +44,11 @@ namespace BlackJack
             InitializeComponent();
             UpdateScoreText();
             UpdateButtonStatus();
+
+            incomeTimer = new DispatcherTimer();
+            incomeTimer.Tick += new EventHandler(IncomeTimer_Tick);
+            incomeTimer.Interval = TimeSpan.FromMilliseconds(10);
+            incomeTimer.Start();
         }
 
         private void CookiePress_MouseUp(object sender, MouseButtonEventArgs e)
@@ -171,12 +180,31 @@ namespace BlackJack
             
             UpdateScoreText();
             UpdateButtonStatus();
+            UpdatePassiveIncome();
         }
 
         private int CalculateCost(int count, int basicCost)
         {
             double result = basicCost * Math.Pow(1.15, count);
             return (int)Math.Ceiling(result);
+        }
+
+        private void IncomeTimer_Tick(object sender, EventArgs e)
+        {
+            score += passiveIncome * 0.01f;
+            score = (float)Math.Round(score, 2);
+
+            UpdateScoreText();
+            UpdateButtonStatus();
+        }
+
+        private void UpdatePassiveIncome()
+        {
+            passiveIncome = cursorCount * 0.001f +
+                            grandmaCount * 0.01f +
+                            farmCount * 0.08f +
+                            mineCount * 0.47f +
+                            factoryCount * 2.60f;
         }
     }
 }
