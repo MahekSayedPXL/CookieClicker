@@ -24,7 +24,7 @@ namespace BlackJack
         private float passiveIncome = 0.0f;
         private DispatcherTimer incomeTimer;
 
-        float score = 10000f;
+        float score = 0f;
 
         int cursorCost = 15;
         int grandmaCost = 10;
@@ -286,5 +286,68 @@ namespace BlackJack
             string spaceNumber = $"{number:N0}".Replace(".", " ");
             return spaceNumber;
         }
+
+        public class InputDialog : Window
+        {
+            private TextBox txtInput;
+            private Button btnOK;
+            private Button btnCancel;
+
+            public string InputValue { get; private set; }
+
+            public InputDialog(string title, string prompt)
+            {
+                Title = title;
+                Width = 300;
+                Height = 150;
+
+                Grid grid = new Grid();
+
+                txtInput = new TextBox { Margin = new Thickness(10, 30, 0, 0), Width = 200 };
+                btnOK = new Button { Content = "OK", Width = 75, Height = 25, Margin = new Thickness(5) };
+                btnCancel = new Button { Content = "Cancel", Width = 75, Height = 25, Margin = new Thickness(5) };
+
+                btnOK.Click += (sender, e) =>
+                {
+                    InputValue = txtInput.Text;
+                    DialogResult = true;
+                };
+
+                btnCancel.Click += (sender, e) => DialogResult = false;
+
+                grid.Children.Add(new Label { Content = prompt, Margin = new Thickness(10) });
+                grid.Children.Add(txtInput);
+                grid.Children.Add(new StackPanel
+                {
+                    Orientation = Orientation.Horizontal,
+                    HorizontalAlignment = HorizontalAlignment.Right,
+                    VerticalAlignment = VerticalAlignment.Bottom,
+                    Children = { btnOK, btnCancel }
+                });
+
+                Content = grid;
+            }
+        }
+
+        private void BakeryName_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            InputDialog dialog = new InputDialog("Change Bakery Name", "Enter a new bakery name:");
+
+            if (dialog.ShowDialog() == true)
+            {
+                string newBakeryName = dialog.InputValue.Trim();
+
+                if (!string.IsNullOrWhiteSpace(newBakeryName))
+                {
+                    lblBakeryName.Content = newBakeryName;
+                    MessageBox.Show("Bakery name changed successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Invalid bakery name. Please enter a valid name.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
     }
 }
+
