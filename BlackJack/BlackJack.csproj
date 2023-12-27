@@ -95,16 +95,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="cookie-removebg-preview.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="cursor-removebg-preview %281%29.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="grandma-removebg-preview.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="farm.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="mine-removebg-preview.png" />
@@ -113,13 +107,43 @@
     <Resource Include="factory-removebg-preview.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="background.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="temple-removebg-preview.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="bank-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="cursor_background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="grandma_background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="farm_background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="mine_background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="factory_background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bank_background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="temple_background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="cupcake-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="farm-removebg-preview %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="cloud_background.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
