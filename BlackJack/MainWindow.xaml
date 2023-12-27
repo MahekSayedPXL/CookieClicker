@@ -23,7 +23,7 @@
             <Image Name="imgCookie" Source="/cookie-removebg-preview.png" Width="260" Height="260" MouseUp="CookiePress_MouseUp" MouseDown="CookieLose_MouseDown"/>
         </StackPanel>
         <Border Grid.Column="1" Background="White">
-            <Label Content="Cookie Clicker" HorizontalAlignment="Center" FontWeight="Bold" FontSize="30" Foreground="#FFD26A90"/>
+            <Label Content="PXL-Bakery" HorizontalAlignment="Center" FontWeight="Bold" FontSize="30" Foreground="#FFD26A90"/>
         </Border>
         <StackPanel Grid.Column="2" VerticalAlignment="Center" Background="#FFD26A90" d:IsLocked="True" >
             <Label Content="Store" Height="50" FontSize="25" HorizontalAlignment="Center" />
@@ -76,6 +76,26 @@
                         <Label Name="lblFactoryCost" Content="130000" DockPanel.Dock="Bottom"/>
                     </StackPanel>
                     <Label Name="lblNumberOfFactory" Content="0" FontSize="25" HorizontalAlignment="Right"/>
+                </DockPanel>
+            </Button>
+            <Button Name="btnBank" Height="50" Click="btnBuy_Click">
+                <DockPanel>
+                    <Image Source="/bank-removebg-preview.png" Width="50"/>
+                    <StackPanel>
+                        <Label Content="Bank" Width="180" HorizontalContentAlignment="Center"/>
+                        <Label Name="lblBankCost" Content="1400000" DockPanel.Dock="Bottom"/>
+                    </StackPanel>
+                    <Label Name="lblNumberOfBank" Content="0" FontSize="25" HorizontalAlignment="Right"/>
+                </DockPanel>
+            </Button>
+            <Button Name="btnTemple" Height="50" Click="btnBuy_Click">
+                <DockPanel>
+                    <Image Source="/temple-removebg-preview.png" Width="50"/>
+                    <StackPanel>
+                        <Label Content="Temple" Width="180" HorizontalContentAlignment="Center"/>
+                        <Label Name="lblTempleCost" Content="20000000" DockPanel.Dock="Bottom"/>
+                    </StackPanel>
+                    <Label Name="lblNumberOfTemple" Content="0" FontSize="25" HorizontalAlignment="Right"/>
                 </DockPanel>
             </Button>
         </StackPanel>

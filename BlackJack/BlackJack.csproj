@@ -115,5 +115,11 @@
   <ItemGroup>
     <Resource Include="background.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="temple-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bank-removebg-preview.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

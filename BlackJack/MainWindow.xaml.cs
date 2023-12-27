@@ -24,19 +24,23 @@ namespace BlackJack
         private float passiveIncome = 0.0f;
         private DispatcherTimer incomeTimer;
 
-        float score = 0;
+        float score = 10000f;
 
         int cursorCost = 15;
         int grandmaCost = 10;
         int farmCost = 15;
         int mineCost = 20;
         int factoryCost = 25;
+        int bankCost = 30;
+        int templeCost = 35;
 
         int cursorCount = 0;
         int grandmaCount = 0;
         int farmCount = 0;
         int mineCount = 0;
         int factoryCount = 0;
+        int bankCount = 0;
+        int templeCount = 0;
 
 
         public MainWindow()
@@ -84,7 +88,20 @@ namespace BlackJack
 
         private void UpdateScoreText()
         {
-            lblScore.Content = score.ToString();
+            if (score < 1000)
+            {
+                lblScore.Content = score;
+            }
+            if (score < 1000000)
+            {
+                string spaceNumber = NumberWithSpace(score);
+                lblScore.Content = spaceNumber;
+            }
+            else
+            {
+                string largeScore = NameLargeNumber(score);
+                lblScore.Content = largeScore;
+            }
         }
 
         private void UpdateButtonStatus()
@@ -94,6 +111,8 @@ namespace BlackJack
             btnFarm.IsEnabled = false;
             btnMine.IsEnabled = false;
             btnFactory.IsEnabled = false;
+            btnBank.IsEnabled = false;
+            btnTemple.IsEnabled = false;
 
             // Enable buttons based on score
             if (score >= cursorCost)
@@ -116,6 +135,14 @@ namespace BlackJack
             {
                 btnFactory.IsEnabled = true;
             }
+            if (score >= bankCost)
+            {
+                btnBank.IsEnabled = true;
+            }
+            if (score >= templeCost)
+            {
+                btnTemple.IsEnabled = true;
+            }
         }
 
         private void btnBuy_Click(object sender, RoutedEventArgs e)
@@ -132,6 +159,7 @@ namespace BlackJack
                         lblNumberOfCursor.Content = cursorCount.ToString();
                         cursorCost = CalculateCost(cursorCount, cursorCost);
                         lblCursorCost.Content = cursorCost.ToString();
+                        UpdatePassiveIncome();
                     }
                     break;
                 case "btnGrandma":
@@ -142,6 +170,7 @@ namespace BlackJack
                         lblNumberOfGrandma.Content = grandmaCount.ToString();
                         grandmaCost = CalculateCost(grandmaCount, grandmaCost);
                         lblGrandmaCost.Content = grandmaCost.ToString();
+                        UpdatePassiveIncome();
                     }
                     break;
                 case "btnFarm":    
@@ -152,6 +181,7 @@ namespace BlackJack
                         lblNumberOfFarm.Content = farmCount.ToString();
                         farmCost = CalculateCost(farmCount, farmCost);
                         lblFarmCost.Content = farmCost.ToString();
+                        UpdatePassiveIncome();
                     }
                     break;
                 case "btnMine":
@@ -162,6 +192,7 @@ namespace BlackJack
                         lblNumberOfMine.Content = mineCount.ToString();
                         mineCost = CalculateCost(mineCount, mineCost);
                         lblMineCost.Content = mineCost.ToString();
+                        UpdatePassiveIncome();
                     }
                     break;
                 case "btnFactory":
@@ -172,6 +203,29 @@ namespace BlackJack
                         lblNumberOfFactory.Content = factoryCount.ToString();
                         factoryCost = CalculateCost(factoryCount, factoryCost);
                         lblFactoryCost.Content = factoryCost.ToString();
+                        UpdatePassiveIncome();
+                    }
+                    break;
+                case "btnBank":
+                    if (score >= bankCost)
+                    {
+                        score -= bankCost;
+                        bankCount++;
+                        lblNumberOfBank.Content = bankCount.ToString();
+                        bankCost = CalculateCost(bankCount, bankCost);
+                        lblBankCost.Content = bankCost.ToString();
+                        UpdatePassiveIncome();
+                    }
+                    break;
+                case "btnTemple":
+                    if (score >= templeCost)
+                    {
+                        score -= templeCost;
+                        templeCount++;
+                        lblNumberOfTemple.Content = templeCount.ToString();
+                        templeCost = CalculateCost(templeCount, templeCost);
+                        lblTempleCost.Content = templeCost.ToString();
+                        UpdatePassiveIncome();
                     }
                     break;
                 default:
@@ -180,7 +234,6 @@ namespace BlackJack
             
             UpdateScoreText();
             UpdateButtonStatus();
-            UpdatePassiveIncome();
         }
 
         private int CalculateCost(int count, int basicCost)
@@ -204,11 +257,34 @@ namespace BlackJack
                                   grandmaCount * 0.01f +
                                   farmCount * 0.08f +
                                   mineCount * 0.47f +
-                                  factoryCount * 2.60f;
+                                  factoryCount * 2.60f +
+                                  bankCount * 14f +
+                                  templeCount * 78f;
 
-            passiveIncome = (float)Math.Round(passiveIncome, 2);
+            //passiveIncome = (float)Math.Round(passiveIncome, 2);
 
-            lblCookiesPerSec.Content = passiveIncome.ToString("0.00");
+            lblCookiesPerSec.Content = passiveIncome.ToString();
+        }
+
+        private string NameLargeNumber(float number)
+        {
+            string[] terms = {"", "Miljoen", "Miljard", "Biljoen", "Biljard", "Triljoen"};
+
+            int termsIndex = 0;
+            while (number >= 1000000 && termsIndex < terms.Length - 1)
+            {
+                number /= 1000000;
+                termsIndex++;
+            }
+
+            string largeNumber = $"{number:N3} {terms[termsIndex]}";
+            return largeNumber;
+        }
+
+        private string NumberWithSpace(float number)
+        {
+            string spaceNumber = $"{number:N0}".Replace(".", " ");
+            return spaceNumber;
         }
     }
 }
