@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,7 +27,7 @@ namespace BlackJack
 
         float score = 0f;
 
-        int cursorCost = 15;
+        int cursorCost = 5;
         int grandmaCost = 10;
         int farmCost = 15;
         int mineCost = 20;
@@ -41,7 +42,6 @@ namespace BlackJack
         int factoryCount = 0;
         int bankCount = 0;
         int templeCount = 0;
-
 
         public MainWindow()
         {
