@@ -110,6 +110,44 @@ namespace BlackJack
                                    (grandmaCount * grandmaCost) + (farmCount * farmCost) +
                                    (mineCount * mineCost) + (factoryCount * factoryCost) +
                                    (bankCount * bankCost) + (templeCount * templeCost);
+            
+            btnCursor.IsEnabled = false;
+            btnGrandma.IsEnabled = false;
+            btnFarm.IsEnabled = false;
+            btnMine.IsEnabled = false;
+            btnFactory.IsEnabled = false;
+            btnBank.IsEnabled = false;
+            btnTemple.IsEnabled = false;
+
+            // Enable buttons based on score
+            if (score >= cursorCost)
+            {
+                btnCursor.IsEnabled = true;
+            }
+            if (score >= grandmaCost)
+            {
+                btnGrandma.IsEnabled = true;
+            }
+            if (score >= farmCost)
+            {
+                btnFarm.IsEnabled = true;
+            }
+            if (score >= mineCost)
+            {
+                btnMine.IsEnabled = true;
+            }
+            if (score >= factoryCost)
+            {
+                btnFactory.IsEnabled = true;
+            }
+            if (score >= bankCost)
+            {
+                btnBank.IsEnabled = true;
+            }
+            if (score >= templeCost)
+            {
+                btnTemple.IsEnabled = true;
+            }
 
             btnCursor.Visibility = Visibility.Hidden;
             btnGrandma.Visibility = Visibility.Hidden;
@@ -119,7 +157,7 @@ namespace BlackJack
             btnBank.Visibility = Visibility.Hidden;
             btnTemple.Visibility = Visibility.Hidden;
 
-            // Enable buttons based on score
+            // Visible buttons based on score
             if (totalCookiesCollected >= cursorCost)
             {
                 btnCursor.Visibility = Visibility.Visible;
