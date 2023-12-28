@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BlackJack"
         mc:Ignorable="d"
-        Title="BlackJack" Height="450" Width="800">
+        Title="Cookie Clicker" Height="450" Width="800">
     <Grid Margin="0,0,-52,-32">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -29,63 +29,57 @@
             <Image Name="imgCookie" Source="/cupcake-removebg-preview.png" Width="260" Height="260" MouseUp="CookiePress_MouseUp" MouseDown="CookieLose_MouseDown"/>
         </StackPanel>
 
+                
         <StackPanel Grid.Column="1" Background="White">
                 
             <Label Name="lblBakeryName" Content="PXL-Bakery" HorizontalAlignment="Center" Height="60" FontWeight="Bold" FontSize="30" Foreground="#94e4e4" MouseUp="BakeryName_MouseUp"/>
-            
-            <Border>
-                <Label Content="Cursor" Height="60"/>
+
+            <Border Height="60">
                 <Border.Background>
                     <ImageBrush ImageSource="/cloud_background.jpg" TileMode="Tile" Viewport="0,0,1,2" ViewportUnits="RelativeToBoundingBox"/>
                 </Border.Background>
             </Border>
 
-            <Border>
-                <Label Content="grandma" Height="60"/>
+            <Border Height="60">
                 <Border.Background>
                     <ImageBrush ImageSource="/grandma_background.jpg" TileMode="Tile" Viewport="0,0,1,2" ViewportUnits="RelativeToBoundingBox"/>
                 </Border.Background>
             </Border>
 
-            <Border>
-                <Label Content="farm" Height="60"/>
+            <Border Height="60">
                 <Border.Background>
                     <ImageBrush ImageSource="/farm_background.jpg" TileMode="Tile" Viewport="0,0,1,2" ViewportUnits="RelativeToBoundingBox"/>
                 </Border.Background>
             </Border>
 
-            <Border>
-                <Label Content="mine" Height="60"/>
+            <Border Height="60">
                 <Border.Background>
                     <ImageBrush ImageSource="/mine_background.jpg" TileMode="Tile" Viewport="0,0,1,2" ViewportUnits="RelativeToBoundingBox"/>
                 </Border.Background>
             </Border>
 
-            <Border>
-                <Label Content="factory" Height="60"/>
+            <Border Height="60">
                 <Border.Background>
                     <ImageBrush ImageSource="/factory_background.jpg" TileMode="Tile" Viewport="0,0,1,2" ViewportUnits="RelativeToBoundingBox"/>
                 </Border.Background>
             </Border>
 
-            <Border>
-                <Label Content="bank" Height="60"/>
+            <Border Height="60">
                 <Border.Background>
                     <ImageBrush ImageSource="/bank_background.jpg" TileMode="Tile" Viewport="0,0,1,2" ViewportUnits="RelativeToBoundingBox"/>
                 </Border.Background>
             </Border>
 
-            <Border>
-                <Label Content="bank" Height="60"/>
+            <Border Height="60">
                 <Border.Background>
                     <ImageBrush ImageSource="/temple_background.jpg" TileMode="Tile" Viewport="0,0,1,2" ViewportUnits="RelativeToBoundingBox"/>
                 </Border.Background>
             </Border>
 
-        </StackPanel>    
+        </StackPanel>
 
-        <StackPanel Grid.Column="2">
-            <Label Content="Store" Height="60" FontWeight="Bold" FontSize="30" Foreground="#eb869f" HorizontalAlignment="Center" Width="102"/>
+        <StackPanel Grid.Column="2" Background="#94e4e4">
+            <Label Content="Store" Height="60" FontWeight="Bold" FontSize="30" Foreground="White" HorizontalAlignment="Center" Width="102"/>
 
             <Button Name="btnCursor" Height="60" Click="btnBuy_Click" Background="White">
             <DockPanel>
@@ -102,7 +96,7 @@
                 <DockPanel>
                         <Image Source="/grandma-removebg-preview.png" Width="50"/>
                         <StackPanel>
-                        <Label Content="Grandma" Foreground="#eb869f" FontWeight="Bold" FontSize="20"  Width="180" HorizontalContentAlignment="Center"/>
+                        <Label Content="Grandma" Foreground="DarkRed" FontWeight="Bold" FontSize="20"  Width="180" HorizontalContentAlignment="Center"/>
                             <Label Name="lblGrandmaCost" Content="100"/>
                         </StackPanel>
                         <Label Name="lblNumberOfGrandma" Content="0" FontSize="25" HorizontalAlignment="Right"/>
@@ -113,7 +107,7 @@
                 <DockPanel>
                         <Image Source="/farm-removebg-preview (1).png" Width="50"/>
                         <StackPanel>
-                        <Label Content="Farm" Foreground="#eb869f" FontWeight="Bold" FontSize="20" Width="180" HorizontalContentAlignment="Center"/>
+                        <Label Content="Farm" Foreground="Blue" FontWeight="Bold" FontSize="20" Width="180" HorizontalContentAlignment="Center"/>
                             <Label Name="lblFarmCost" Content="1100" DockPanel.Dock="Bottom"/>
                         </StackPanel>
                         <Label Name="lblNumberOfFarm" Content="0" FontSize="25" HorizontalAlignment="Right"/>
@@ -124,7 +118,7 @@
                 <DockPanel>
                         <Image Source="/mine-removebg-preview.png" Width="50"/>
                         <StackPanel>
-                        <Label Content="Mine" Foreground="#eb869f" FontWeight="Bold" FontSize="20" Width="180" HorizontalContentAlignment="Center"/>
+                        <Label Content="Mine" Foreground="Brown" FontWeight="Bold" FontSize="20" Width="180" HorizontalContentAlignment="Center"/>
                             <Label Name="lblMineCost" Content="12000" DockPanel.Dock="Bottom"/>
                         </StackPanel>
                         <Label Name="lblNumberOfMine" Content="0"  FontSize="25" HorizontalAlignment="Right"/>
@@ -135,7 +129,7 @@
                 <DockPanel>
                         <Image Source="/factory-removebg-preview.png" Width="50"/>
                         <StackPanel>
-                        <Label Content="Factory" Foreground="#eb869f" FontWeight="Bold" FontSize="20" Width="180" HorizontalContentAlignment="Center"/>
+                        <Label Content="Factory" Foreground="OrangeRed" FontWeight="Bold" FontSize="20" Width="180" HorizontalContentAlignment="Center"/>
                             <Label Name="lblFactoryCost" Content="130000" DockPanel.Dock="Bottom"/>
                         </StackPanel>
                         <Label Name="lblNumberOfFactory" Content="0" FontSize="25" HorizontalAlignment="Right"/>
@@ -146,7 +140,7 @@
                 <DockPanel>
                         <Image Source="/bank-removebg-preview.png" Width="50"/>
                         <StackPanel>
-                        <Label Content="Bank" Foreground="#eb869f" FontWeight="Bold" FontSize="20" Width="180" HorizontalContentAlignment="Center"/>
+                        <Label Content="Bank" Foreground="YellowGreen" FontWeight="Bold" FontSize="20" Width="180" HorizontalContentAlignment="Center"/>
                             <Label Name="lblBankCost" Content="1400000" DockPanel.Dock="Bottom"/>
                         </StackPanel>
                         <Label Name="lblNumberOfBank" Content="0" FontSize="25" HorizontalAlignment="Right"/>
@@ -157,7 +151,7 @@
                 <DockPanel>
                         <Image Source="/temple-removebg-preview.png" Width="50"/>
                         <StackPanel>
-                        <Label Content="Temple" Foreground="#eb869f" FontWeight="Bold" FontSize="20" Width="180" HorizontalContentAlignment="Center"/>
+                        <Label Content="Temple" Foreground="Gold" FontWeight="Bold" FontSize="20" Width="180" HorizontalContentAlignment="Center"/>
                             <Label Name="lblTempleCost" Content="20000000" DockPanel.Dock="Bottom"/>
                         </StackPanel>
                         <Label Name="lblNumberOfTemple" Content="0" FontSize="25" HorizontalAlignment="Right"/>

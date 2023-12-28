@@ -106,42 +106,47 @@ namespace BlackJack
 
         private void UpdateButtonStatus()
         {
-            btnCursor.IsEnabled = false;
-            btnGrandma.IsEnabled = false;
-            btnFarm.IsEnabled = false;
-            btnMine.IsEnabled = false;
-            btnFactory.IsEnabled = false;
-            btnBank.IsEnabled = false;
-            btnTemple.IsEnabled = false;
+            float totalCookiesCollected = score + (cursorCount * cursorCost) +
+                                   (grandmaCount * grandmaCost) + (farmCount * farmCost) +
+                                   (mineCount * mineCost) + (factoryCount * factoryCost) +
+                                   (bankCount * bankCost) + (templeCount * templeCost);
+
+            btnCursor.Visibility = Visibility.Hidden;
+            btnGrandma.Visibility = Visibility.Hidden;
+            btnFarm.Visibility = Visibility.Hidden;
+            btnMine.Visibility = Visibility.Hidden;
+            btnFactory.Visibility = Visibility.Hidden;
+            btnBank.Visibility = Visibility.Hidden;
+            btnTemple.Visibility = Visibility.Hidden;
 
             // Enable buttons based on score
-            if (score >= cursorCost)
+            if (totalCookiesCollected >= cursorCost)
             {
-                btnCursor.IsEnabled = true;
+                btnCursor.Visibility = Visibility.Visible;
             }
-            if (score >= grandmaCost)
+            if (totalCookiesCollected >= grandmaCost)
             {
-                btnGrandma.IsEnabled = true;
+                btnGrandma.Visibility = Visibility.Visible;
             }
-            if (score >= farmCost)
+            if (totalCookiesCollected >= farmCost)
             {
-                btnFarm.IsEnabled = true;
+                btnFarm.Visibility = Visibility.Visible;
             }
-            if (score >= mineCost)
+            if (totalCookiesCollected >= mineCost)
             {
-                btnMine.IsEnabled = true;
+                btnMine.Visibility = Visibility.Visible;
             }
-            if (score >= factoryCost)
+            if (totalCookiesCollected >= factoryCost)
             {
-                btnFactory.IsEnabled = true;
+                btnFactory.Visibility = Visibility.Visible;
             }
-            if (score >= bankCost)
+            if (totalCookiesCollected >= bankCost)
             {
-                btnBank.IsEnabled = true;
+                btnBank.Visibility = Visibility.Visible;
             }
-            if (score >= templeCost)
+            if (totalCookiesCollected >= templeCost)
             {
-                btnTemple.IsEnabled = true;
+                btnTemple.Visibility = Visibility.Visible;
             }
         }
 
