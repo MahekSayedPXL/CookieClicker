@@ -25,7 +25,7 @@ namespace BlackJack
         private float passiveIncome = 0.0f;
         private DispatcherTimer incomeTimer;
 
-        double score = 0;
+        double score = 4000000;
 
         int cursorCost = 5;
         int grandmaCost = 10;
@@ -203,6 +203,8 @@ namespace BlackJack
                         cursorCost = CalculateCost(cursorCount, cursorCost);
                         lblCursorCost.Content = cursorCost.ToString();
                         UpdatePassiveIncome();
+
+                        BuyItem("/cursor-removebg-preview (1).png", "Cursor");
                     }
                     break;
                 case "btnGrandma":
@@ -214,6 +216,8 @@ namespace BlackJack
                         grandmaCost = CalculateCost(grandmaCount, grandmaCost);
                         lblGrandmaCost.Content = grandmaCost.ToString();
                         UpdatePassiveIncome();
+
+                        BuyItem("/grandma-removebg-preview.png", "Grandma");
                     }
                     break;
                 case "btnFarm":
@@ -225,6 +229,8 @@ namespace BlackJack
                         farmCost = CalculateCost(farmCount, farmCost);
                         lblFarmCost.Content = farmCost.ToString();
                         UpdatePassiveIncome();
+
+                        BuyItem("/farm-removebg-preview (1).png", "Farm");
                     }
                     break;
                 case "btnMine":
@@ -236,6 +242,8 @@ namespace BlackJack
                         mineCost = CalculateCost(mineCount, mineCost);
                         lblMineCost.Content = mineCost.ToString();
                         UpdatePassiveIncome();
+
+                        BuyItem("/mine-removebg-preview.png", "Mine");
                     }
                     break;
                 case "btnFactory":
@@ -247,6 +255,7 @@ namespace BlackJack
                         factoryCost = CalculateCost(factoryCount, factoryCost);
                         lblFactoryCost.Content = factoryCost.ToString();
                         UpdatePassiveIncome();
+                        BuyItem("/factory-removebg-preview.png", "Factory");
                     }
                     break;
                 case "btnBank":
@@ -258,6 +267,8 @@ namespace BlackJack
                         bankCost = CalculateCost(bankCount, bankCost);
                         lblBankCost.Content = bankCost.ToString();
                         UpdatePassiveIncome();
+
+                        BuyItem("/bank-removebg-preview.png", "Bank");
                     }
                     break;
                 case "btnTemple":
@@ -269,6 +280,8 @@ namespace BlackJack
                         templeCost = CalculateCost(templeCount, templeCost);
                         lblTempleCost.Content = templeCost.ToString();
                         UpdatePassiveIncome();
+
+                        BuyItem("/temple-removebg-preview.png", "Temple");
                     }
                     break;
                 default:
@@ -304,7 +317,7 @@ namespace BlackJack
                                   bankCount * 1400f +
                                   templeCount * 7800f;
 
-            passiveIncome = (float)Math.Round(passiveIncome, 2);
+            //passiveIncome = (float)Math.Round(passiveIncome, 2);
             lblCookiesPerSec.Content = passiveIncome.ToString();
         }
 
@@ -388,6 +401,47 @@ namespace BlackJack
                 {
                     MessageBox.Show("Invalid bakery name. Please enter a valid name.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
+            }
+        }
+
+        private void BuyItem(string imagePath, string category)
+        {
+            Image newItemImage = new Image
+            {
+                Source = new BitmapImage(new Uri(imagePath, UriKind.Relative)),
+                Width = 30,
+                Height = 30
+            };
+
+            // Determine the appropriate WrapPanel based on the category
+            WrapPanel targetWrapPanel = GetWrapPanelByCategory(category);
+
+            // Add the new item image to the determined WrapPanel
+            targetWrapPanel.Children.Add(newItemImage);
+        }
+
+        private WrapPanel GetWrapPanelByCategory(string category)
+        {
+            // Choose the correct WrapPanel based on the category
+            switch (category)
+            {
+                case "Cursor":
+                    return wrapPanelCursor;
+                case "Grandma":
+                    return wrapPanelGrandma;
+                case "Farm":
+                    return wrapPanelFarm;
+                case "Mine":
+                    return wrapPanelMine;
+                case "Factory":
+                    return wrapPanelFactory;
+                case "Bank":
+                    return wrapPanelBank;
+                case "Temple":
+                    return wrapPanelTemple;
+                default:
+                    // You can handle a default case or raise an error based on your requirements
+                    throw new ArgumentException($"Unknown category: {category}");
             }
         }
     }

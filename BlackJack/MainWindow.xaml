@@ -40,42 +40,49 @@
                 <Border.Background>
                     <ImageBrush ImageSource="/cloud_background.jpg" TileMode="Tile" Viewport="0,0,1,2" ViewportUnits="RelativeToBoundingBox"/>
                 </Border.Background>
+                <WrapPanel Name="wrapPanelCursor" Orientation="Horizontal"/>
             </Border>
 
             <Border Height="60">
                 <Border.Background>
                     <ImageBrush ImageSource="/grandma_background.jpg" TileMode="Tile" Viewport="0,0,1,2" ViewportUnits="RelativeToBoundingBox"/>
                 </Border.Background>
+                    <WrapPanel Name="wrapPanelGrandma" Orientation="Horizontal"/>
             </Border>
 
             <Border Height="60">
                 <Border.Background>
                     <ImageBrush ImageSource="/farm_background.jpg" TileMode="Tile" Viewport="0,0,1,2" ViewportUnits="RelativeToBoundingBox"/>
-                </Border.Background>
-            </Border>
+                    </Border.Background>
+                    <WrapPanel Name="wrapPanelFarm" Orientation="Horizontal"/>
+                </Border>
 
             <Border Height="60">
                 <Border.Background>
                     <ImageBrush ImageSource="/mine_background.jpg" TileMode="Tile" Viewport="0,0,1,2" ViewportUnits="RelativeToBoundingBox"/>
-                </Border.Background>
-            </Border>
+                    </Border.Background>
+                    <WrapPanel Name="wrapPanelMine" Orientation="Horizontal"/>
+                </Border>
 
             <Border Height="60">
                 <Border.Background>
                     <ImageBrush ImageSource="/factory_background.jpg" TileMode="Tile" Viewport="0,0,1,2" ViewportUnits="RelativeToBoundingBox"/>
-                </Border.Background>
-            </Border>
+                    </Border.Background>
+                    <WrapPanel Name="wrapPanelFactory" Orientation="Horizontal"/>
+                </Border>
 
             <Border Height="60">
                 <Border.Background>
                     <ImageBrush ImageSource="/bank_background.jpg" TileMode="Tile" Viewport="0,0,1,2" ViewportUnits="RelativeToBoundingBox"/>
                 </Border.Background>
+                <WrapPanel Name="wrapPanelBank" Orientation="Horizontal"/>
             </Border>
 
             <Border Height="60">
                 <Border.Background>
                     <ImageBrush ImageSource="/temple_background.jpg" TileMode="Tile" Viewport="0,0,1,2" ViewportUnits="RelativeToBoundingBox"/>
                 </Border.Background>
+                <WrapPanel Name="wrapPanelTemple" Orientation="Horizontal"/>
             </Border>
 
         </StackPanel>
