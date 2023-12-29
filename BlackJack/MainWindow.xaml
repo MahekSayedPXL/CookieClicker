@@ -82,86 +82,89 @@
         </Viewbox>
 
         <Viewbox Grid.Column="2" Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <StackPanel Grid.Column="2" Background="#94e4e4" Width= "300">
-                <Label Content="Store" Height="60" FontWeight="Bold" FontSize="30" Foreground="White" HorizontalAlignment="Center" Width="102"/>
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Grid.Column="2" Background="#94e4e4" Width= "300">
+                    <Label Content="Store" Height="60" FontWeight="Bold" FontSize="30" Foreground="White" HorizontalAlignment="Center" Width="102"/>
 
-                <Button Name="btnCursor" Height="60" Click="btnBuy_Click" Background="White">
-                    <DockPanel>
-                        <Image Source="/cursor-removebg-preview (1).png" Height="90" Width="50"/>
-                        <StackPanel>
-                            <Label Content="Cursor" Foreground="#eb869f" FontWeight="Bold" FontSize="20" Width="180" HorizontalContentAlignment="Center"/>
-                            <Label Name="lblCursorCost" Content="15"/>
-                        </StackPanel>
-                        <Label Name="lblNumberOfCursor" Content="0" FontSize="25" HorizontalAlignment="Right"/>
-                    </DockPanel>
-                </Button>
+                    <Button Name="btnCursor" Height="60" Click="btnBuy_Click" Background="White">
+                        <DockPanel>
+                            <Image Source="/cursor-removebg-preview (1).png" Height="90" Width="50"/>
+                            <StackPanel>
+                                <Label Content="Cursor" Foreground="#eb869f" FontWeight="Bold" FontSize="20" Width="180" HorizontalContentAlignment="Center"/>
+                                <Label Name="lblCursorCost" Content="15"/>
+                            </StackPanel>
+                            <Label Name="lblNumberOfCursor" Content="0" FontSize="25" HorizontalAlignment="Right"/>
+                        </DockPanel>
+                    </Button>
 
-                <Button Name="btnGrandma" Height="60" Click="btnBuy_Click" Background="White">
-                    <DockPanel>
-                        <Image Source="/grandma-removebg-preview.png" Width="50"/>
-                        <StackPanel>
-                            <Label Content="Grandma" Foreground="DarkRed" FontWeight="Bold" FontSize="20"  Width="180" HorizontalContentAlignment="Center"/>
-                            <Label Name="lblGrandmaCost" Content="100"/>
-                        </StackPanel>
-                        <Label Name="lblNumberOfGrandma" Content="0" FontSize="25" HorizontalAlignment="Right"/>
-                    </DockPanel>
-                </Button>
+                    <Button Name="btnGrandma" Height="60" Click="btnBuy_Click" Background="White">
+                        <DockPanel>
+                            <Image Source="/grandma-removebg-preview.png" Width="50"/>
+                            <StackPanel>
+                                <Label Content="Grandma" Foreground="DarkRed" FontWeight="Bold" FontSize="20"  Width="180" HorizontalContentAlignment="Center"/>
+                                <Label Name="lblGrandmaCost" Content="100"/>
+                            </StackPanel>
+                            <Label Name="lblNumberOfGrandma" Content="0" FontSize="25" HorizontalAlignment="Right"/>
+                        </DockPanel>
+                    </Button>
 
-                <Button Name="btnFarm" Height="60" Click="btnBuy_Click" Background="White">
-                    <DockPanel>
-                        <Image Source="/farm-removebg-preview (1).png" Width="50"/>
-                        <StackPanel>
-                            <Label Content="Farm" Foreground="Blue" FontWeight="Bold" FontSize="20" Width="180" HorizontalContentAlignment="Center"/>
-                            <Label Name="lblFarmCost" Content="1100" DockPanel.Dock="Bottom"/>
-                        </StackPanel>
-                        <Label Name="lblNumberOfFarm" Content="0" FontSize="25" HorizontalAlignment="Right"/>
-                    </DockPanel>
-                </Button>
+                    <Button Name="btnFarm" Height="60" Click="btnBuy_Click" Background="White">
+                        <DockPanel>
+                            <Image Source="/farm-removebg-preview (1).png" Width="50"/>
+                            <StackPanel>
+                                <Label Content="Farm" Foreground="Blue" FontWeight="Bold" FontSize="20" Width="180" HorizontalContentAlignment="Center"/>
+                                <Label Name="lblFarmCost" Content="1100" DockPanel.Dock="Bottom"/>
+                            </StackPanel>
+                            <Label Name="lblNumberOfFarm" Content="0" FontSize="25" HorizontalAlignment="Right"/>
+                        </DockPanel>
+                    </Button>
 
-                <Button Name="btnMine" Height="60" Click="btnBuy_Click" Background="White">
-                    <DockPanel>
-                        <Image Source="/mine-removebg-preview.png" Width="50"/>
-                        <StackPanel>
-                            <Label Content="Mine" Foreground="Brown" FontWeight="Bold" FontSize="20" Width="180" HorizontalContentAlignment="Center"/>
-                            <Label Name="lblMineCost" Content="12000" DockPanel.Dock="Bottom"/>
-                        </StackPanel>
-                        <Label Name="lblNumberOfMine" Content="0"  FontSize="25" HorizontalAlignment="Right"/>
-                    </DockPanel>
-                </Button>
+                    <Button Name="btnMine" Height="60" Click="btnBuy_Click" Background="White">
+                        <DockPanel>
+                            <Image Source="/mine-removebg-preview.png" Width="50"/>
+                            <StackPanel>
+                                <Label Content="Mine" Foreground="Brown" FontWeight="Bold" FontSize="20" Width="180" HorizontalContentAlignment="Center"/>
+                                <Label Name="lblMineCost" Content="12000" DockPanel.Dock="Bottom"/>
+                            </StackPanel>
+                            <Label Name="lblNumberOfMine" Content="0"  FontSize="25" HorizontalAlignment="Right"/>
+                        </DockPanel>
+                    </Button>
 
-                <Button Name="btnFactory" Height="60" Click="btnBuy_Click" Background="White">
-                    <DockPanel>
-                        <Image Source="/factory-removebg-preview.png" Width="50"/>
-                        <StackPanel>
-                            <Label Content="Factory" Foreground="OrangeRed" FontWeight="Bold" FontSize="20" Width="180" HorizontalContentAlignment="Center"/>
-                            <Label Name="lblFactoryCost" Content="130000" DockPanel.Dock="Bottom"/>
-                        </StackPanel>
-                        <Label Name="lblNumberOfFactory" Content="0" FontSize="25" HorizontalAlignment="Right"/>
-                    </DockPanel>
-                </Button>
+                    <Button Name="btnFactory" Height="60" Click="btnBuy_Click" Background="White">
+                        <DockPanel>
+                            <Image Source="/factory-removebg-preview.png" Width="50"/>
+                            <StackPanel>
+                                <Label Content="Factory" Foreground="OrangeRed" FontWeight="Bold" FontSize="20" Width="180" HorizontalContentAlignment="Center"/>
+                                <Label Name="lblFactoryCost" Content="130000" DockPanel.Dock="Bottom"/>
+                            </StackPanel>
+                            <Label Name="lblNumberOfFactory" Content="0" FontSize="25" HorizontalAlignment="Right"/>
+                        </DockPanel>
+                    </Button>
 
-                <Button Name="btnBank" Height="60" Click="btnBuy_Click" Background="White">
-                    <DockPanel>
-                        <Image Source="/bank-removebg-preview.png" Width="50"/>
-                        <StackPanel>
-                            <Label Content="Bank" Foreground="YellowGreen" FontWeight="Bold" FontSize="20" Width="180" HorizontalContentAlignment="Center"/>
-                            <Label Name="lblBankCost" Content="1400000" DockPanel.Dock="Bottom"/>
-                        </StackPanel>
-                        <Label Name="lblNumberOfBank" Content="0" FontSize="25" HorizontalAlignment="Right"/>
-                    </DockPanel>
-                </Button>
+                    <Button Name="btnBank" Height="60" Click="btnBuy_Click" Background="White">
+                        <DockPanel>
+                            <Image Source="/bank-removebg-preview.png" Width="50"/>
+                            <StackPanel>
+                                <Label Content="Bank" Foreground="YellowGreen" FontWeight="Bold" FontSize="20" Width="180" HorizontalContentAlignment="Center"/>
+                                <Label Name="lblBankCost" Content="1400000" DockPanel.Dock="Bottom"/>
+                            </StackPanel>
+                            <Label Name="lblNumberOfBank" Content="0" FontSize="25" HorizontalAlignment="Right"/>
+                        </DockPanel>
+                    </Button>
 
-                <Button Name="btnTemple" Height="60" Click="btnBuy_Click" Background="White">
-                    <DockPanel>
-                        <Image Source="/temple-removebg-preview.png" Width="50"/>
-                        <StackPanel>
-                            <Label Content="Temple" Foreground="Gold" FontWeight="Bold" FontSize="20" Width="180" HorizontalContentAlignment="Center"/>
-                            <Label Name="lblTempleCost" Content="20000000" DockPanel.Dock="Bottom"/>
-                        </StackPanel>
-                        <Label Name="lblNumberOfTemple" Content="0" FontSize="25" HorizontalAlignment="Right"/>
-                    </DockPanel>
-                </Button>
-            </StackPanel>
+                    <Button Name="btnTemple" Height="60" Click="btnBuy_Click" Background="White">
+                        <DockPanel>
+                            <Image Source="/temple-removebg-preview.png" Width="50"/>
+                            <StackPanel>
+                                <Label Content="Temple"  Foreground="Gold" FontWeight="Bold" FontSize="20" Width="180" HorizontalContentAlignment="Center"/>
+                                <Label Name="lblTempleCost" Content="20000000" DockPanel.Dock="Bottom"/>
+                            </StackPanel>
+                            <Label Name="lblNumberOfTemple" Content="0" FontSize="25" HorizontalAlignment="Right"/>
+                        </DockPanel>
+                    </Button>
+                    
+                </StackPanel>
+            </ScrollViewer>
         </Viewbox>
     </Grid>
 </Window>

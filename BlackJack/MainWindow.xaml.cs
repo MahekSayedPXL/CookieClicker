@@ -25,7 +25,7 @@ namespace BlackJack
         private float passiveIncome = 0.0f;
         private DispatcherTimer incomeTimer;
 
-        float score = 0f;
+        double score = 0;
 
         int cursorCost = 5;
         int grandmaCost = 10;
@@ -106,11 +106,11 @@ namespace BlackJack
 
         private void UpdateButtonStatus()
         {
-            float totalCookiesCollected = score + (cursorCount * cursorCost) +
+            double totalCookiesCollected = score + (cursorCount * cursorCost) +
                                    (grandmaCount * grandmaCost) + (farmCount * farmCost) +
                                    (mineCount * mineCost) + (factoryCount * factoryCost) +
                                    (bankCount * bankCost) + (templeCount * templeCost);
-            
+
             btnCursor.IsEnabled = false;
             btnGrandma.IsEnabled = false;
             btnFarm.IsEnabled = false;
@@ -216,7 +216,7 @@ namespace BlackJack
                         UpdatePassiveIncome();
                     }
                     break;
-                case "btnFarm":    
+                case "btnFarm":
                     if (score >= farmCost)
                     {
                         score -= farmCost;
@@ -274,7 +274,7 @@ namespace BlackJack
                 default:
                     break;
             }
-            
+
             UpdateScoreText();
             UpdateButtonStatus();
         }
@@ -296,27 +296,26 @@ namespace BlackJack
 
         private void UpdatePassiveIncome()
         {
-            passiveIncome = cursorCount * 0.001f +
-                                  grandmaCount * 0.01f +
-                                  farmCount * 0.08f +
-                                  mineCount * 0.47f +
-                                  factoryCount * 2.60f +
-                                  bankCount * 14f +
-                                  templeCount * 78f;
+            passiveIncome = cursorCount * 0.1f +
+                                  grandmaCount * 1f +
+                                  farmCount * 8f +
+                                  mineCount * 47f +
+                                  factoryCount * 260f +
+                                  bankCount * 1400f +
+                                  templeCount * 7800f;
 
-            //passiveIncome = (float)Math.Round(passiveIncome, 2);
-
+            passiveIncome = (float)Math.Round(passiveIncome, 2);
             lblCookiesPerSec.Content = passiveIncome.ToString();
         }
 
-        private string NameLargeNumber(float number)
+        private string NameLargeNumber(double number)
         {
-            string[] terms = {"", "Miljoen", "Miljard", "Biljoen", "Biljard", "Triljoen"};
+            string[] terms = { "", "Miljoen", "Miljard", "Biljoen", "Biljard", "Triljoen" };
 
             int termsIndex = 0;
-            while (number >= 1000000 && termsIndex < terms.Length - 1)
+            while (number >= 1000 && termsIndex < terms.Length - 1)
             {
-                number /= 1000000;
+                number /= 1000;
                 termsIndex++;
             }
 
@@ -324,7 +323,7 @@ namespace BlackJack
             return largeNumber;
         }
 
-        private string NumberWithSpace(float number)
+        private string NumberWithSpace(double number)
         {
             string spaceNumber = $"{number:N0}".Replace(".", " ");
             return spaceNumber;
@@ -393,4 +392,3 @@ namespace BlackJack
         }
     }
 }
-
