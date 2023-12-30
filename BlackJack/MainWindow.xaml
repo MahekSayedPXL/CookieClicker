@@ -12,13 +12,14 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        
+
         <Grid.Background>
             <ImageBrush ImageSource="/background.jpg" />
         </Grid.Background>
 
         <Viewbox Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <StackPanel VerticalAlignment="Center">
+                <Canvas Name="mainCanvas" Background="Transparent"/>
                 <DockPanel HorizontalAlignment="Center">
                     <Label Content="Cookies: " FontSize="25" FontWeight="Bold" Foreground="White"/>
                     <Label Name="lblScore" Content="0" FontSize="25" FontWeight="Bold" Foreground="White"/>

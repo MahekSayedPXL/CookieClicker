@@ -25,9 +25,13 @@ namespace BlackJack
         private float passiveIncome = 0.0f;
         private DispatcherTimer incomeTimer;
 
-        double score = 4000000;
+        private Random random = new Random();
+        private DispatcherTimer goldenCookieTimer;
+        private bool isGoldenCookieActive = false;
 
-        int cursorCost = 5;
+        double score = 0;
+
+        int cursorCost = 1;
         int grandmaCost = 10;
         int farmCost = 15;
         int mineCost = 20;
@@ -53,6 +57,11 @@ namespace BlackJack
             incomeTimer.Tick += IncomeTimer_Tick;
             incomeTimer.Interval = TimeSpan.FromMilliseconds(10);
             incomeTimer.Start();
+
+            goldenCookieTimer = new DispatcherTimer();
+            goldenCookieTimer.Tick += GoldenCookieTimer_Tick;
+            goldenCookieTimer.Interval = TimeSpan.FromMinutes(1);
+            goldenCookieTimer.Start();
         }
 
         private void CookiePress_MouseUp(object sender, MouseButtonEventArgs e)
@@ -443,6 +452,53 @@ namespace BlackJack
                     // You can handle a default case or raise an error based on your requirements
                     throw new ArgumentException($"Unknown category: {category}");
             }
+        }
+
+        private void GoldenCookieTimer_Tick(object sender, EventArgs e)
+        {
+            if (random.NextDouble() < 0.3 && !isGoldenCookieActive)
+            {
+                SpawnGoldenCookie();
+            }
+        }
+
+        private void SpawnGoldenCookie()
+        {
+            isGoldenCookieActive = true;
+
+            Image goldenCookieImage = new Image
+            {
+                Source = new BitmapImage(new Uri("/golden_cookie-removebg-preview.png", UriKind.Relative)),
+                Width = 50,
+                Height = 50
+            };
+
+            Canvas.SetLeft(goldenCookieImage, random.Next((int)this.ActualWidth - 50));
+            Canvas.SetTop(goldenCookieImage, random.Next((int)this.ActualHeight - 50));
+
+            mainCanvas.Children.Add(goldenCookieImage);
+
+            goldenCookieImage.MouseUp += GoldenCookieImage_MouseUp;
+
+            DispatcherTimer disappearTimer = new DispatcherTimer();
+            disappearTimer.Tick += (s, e) =>
+            {
+                mainCanvas.Children.Remove(goldenCookieImage);
+                isGoldenCookieActive = false;
+            };
+            disappearTimer.Interval = TimeSpan.FromSeconds(15);
+            disappearTimer.Start();
+        }
+
+        private void GoldenCookieImage_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            mainCanvas.Children.Remove((UIElement)sender);
+            isGoldenCookieActive = false;
+
+            score += passiveIncome * 15 * 60;
+
+            UpdateScoreText();
+            UpdateButtonStatus();
         }
     }
 }

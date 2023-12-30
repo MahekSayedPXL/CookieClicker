@@ -145,5 +145,8 @@
   <ItemGroup>
     <Resource Include="cloud_background.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="golden_cookie-removebg-preview.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
