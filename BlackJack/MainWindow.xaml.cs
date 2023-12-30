@@ -47,6 +47,17 @@ namespace BlackJack
         int bankCount = 0;
         int templeCount = 0;
 
+        private List<Quest> quests;
+
+        public class Quest
+        {
+            public string Name { get; set; }
+            public string Description { get; set; }
+            public Func<bool> IsCompleted { get; set; }
+            public string CompletionMessage { get; set; }
+            public bool IsCompletionMessageShown { get; set; } 
+        }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -62,6 +73,59 @@ namespace BlackJack
             goldenCookieTimer.Tick += GoldenCookieTimer_Tick;
             goldenCookieTimer.Interval = TimeSpan.FromMinutes(1);
             goldenCookieTimer.Start();
+
+            quests = new List<Quest>
+            {
+                new Quest
+                {
+                    Name = "Cookie Fields Attract Attention",
+                    Description = "Bereik 20 cookies per seconde",
+                    IsCompleted = () => passiveIncome >= 5,
+                    CompletionMessage = "Je winkel begint op gang te komen en je trekt volk van heel het dorp naar je bakkerij."
+                },
+                new Quest
+                {
+                    Name = "Grandma Bingo Night",
+                    Description = "Koop 10 grandmas",
+                    IsCompleted = () => grandmaCount >= 10,
+                    CompletionMessage = "In de avond organiseer je bingo-spellen om grootmoeders van heel het dorp te trekken naar je bakkerij. De gratis werkkracht is een succesvol businessmodel."
+                },
+                new Quest
+                {
+                    Name = "Cookie Field Notoriety",
+                    Description = "Bereik 100 cookies per seconde",
+                    IsCompleted = () => passiveIncome >= 100,
+                    CompletionMessage = "Je cookie velden zijn berucht. Je verschijnt dagelijks in de krant over je befaamde cookie planten die je in je akkers teelt."
+                },
+                new Quest
+                {
+                    Name = "Automated Factories",
+                    Description = "Koop 10 factories",
+                    IsCompleted = () => factoryCount >= 10,
+                    CompletionMessage = "The flesh is weak. Je zet alle arbeiders aan de deur. Vanaf vandaag zijn je fabrieken volledig geautomatiseerd."
+                },
+                new Quest
+                {
+                    Name = "Cookie Tycoon Rising",
+                    Description = "Bereik 500 cookies per seconde",
+                    IsCompleted = () => passiveIncome >= 500,
+                    CompletionMessage = "Het dorp spreekt over je als de Cookie Tycoon. De plaatselijke economie draait volledig om jouw bakkerij."
+                },
+                new Quest
+                {
+                    Name = "Mining Bonanza",
+                    Description = "Koop 20 mijnen",
+                    IsCompleted = () => mineCount >= 20,
+                    CompletionMessage = "Je mijnactiviteiten zijn een bonanza geworden. Het dorp is afhankelijk van je waardevolle mijnproducten."
+                },
+                new Quest
+                {
+                    Name = "Banking Empire",
+                    Description = "Koop 50 banken",
+                    IsCompleted = () => bankCount >= 50,
+                    CompletionMessage = "Je mijnactiviteiten zijn een bonanza geworden. Het dorp is afhankelijk van je waardevolle mijnproducten."
+                },
+            };
         }
 
         private void CookiePress_MouseUp(object sender, MouseButtonEventArgs e)
@@ -314,6 +378,14 @@ namespace BlackJack
 
             UpdateScoreText();
             UpdateButtonStatus();
+
+            foreach (var quest in quests)
+            {
+                if (!quest.IsCompleted() || quest.IsCompletionMessageShown) continue;
+
+                MessageBox.Show(quest.CompletionMessage, "Quest Completed", MessageBoxButton.OK, MessageBoxImage.Information);
+                quest.IsCompletionMessageShown = true;
+            }
         }
 
         private void UpdatePassiveIncome()
@@ -417,9 +489,9 @@ namespace BlackJack
         {
             Image newItemImage = new Image
             {
-                Source = new BitmapImage(new Uri(imagePath, UriKind.Relative)),
-                Width = 30,
-                Height = 30
+                Source = new BitmapImage(new Uri(imagePath, UriKind.Relative))
+                //Width = 30,
+                //Height = 30
             };
 
             // Determine the appropriate WrapPanel based on the category
@@ -500,5 +572,7 @@ namespace BlackJack
             UpdateScoreText();
             UpdateButtonStatus();
         }
+
+
     }
 }
