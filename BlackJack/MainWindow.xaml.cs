@@ -55,7 +55,10 @@ namespace BlackJack
             public string Description { get; set; }
             public Func<bool> IsCompleted { get; set; }
             public string CompletionMessage { get; set; }
-            public bool IsCompletionMessageShown { get; set; } 
+            public bool IsCompletionMessageShown { get; set; }
+
+            public string QuestName { get; set; }
+            public string Notification { get; set; }
         }
 
         public MainWindow()
@@ -123,8 +126,99 @@ namespace BlackJack
                     Name = "Banking Empire",
                     Description = "Koop 50 banken",
                     IsCompleted = () => bankCount >= 50,
-                    CompletionMessage = "Je mijnactiviteiten zijn een bonanza geworden. Het dorp is afhankelijk van je waardevolle mijnproducten."
+                    CompletionMessage = "Je bankimperium domineert de financiële wereld. Het dorp is nu een welvarende stad dankzij jou."
                 },
+                new Quest
+                {
+                    Name = "Temple of Cookies",
+                    Description = "Koop 5 tempels",
+                    IsCompleted = () => bankCount >= 50,
+                    CompletionMessage = "Je hebt nu een tempelgebied. Mensen maken bedevaarten om je heilige cookies te proeven."
+                },
+                new Quest
+                {
+                    Name = "Farmland Frenzy",
+                    Description = "Koop 30 boerderijen",
+                    IsCompleted = () => farmCount >= 30,
+                    CompletionMessage = "Je boerderijen zijn een ware frenzy geworden. Het dorp wordt gevoed door je overvloedige oogst."
+                },
+                new Quest
+                {
+                    Name = "Cookie Celeb",
+                    Description = "Bereik 5,000 cookies per seconde.",
+                    IsCompleted = () => passiveIncome >= 5000,
+                    CompletionMessage = "Je bent een beroemdheid geworden. Paparazzi volgen je elke beweging, allemaal vanwege je onweerstaanbare cookies."
+                },
+                new Quest
+                {
+                    Name = "Quantum Factories",
+                    Description = "Koop 100 factories",
+                    IsCompleted = () => factoryCount >= 100,
+                    CompletionMessage = "Je fabrieken werken nu op een quantumniveau. Productiviteit is niet te bevatten."
+                },
+                new Quest
+                {
+                    Name = "Epic Farmland Uprising",
+                    Description = "Koop 100 boerderijen",
+                    IsCompleted = () => farmCount >= 100,
+                    CompletionMessage = "Je boerderijen hebben een epische opstand veroorzaakt. Het dorp is getuige van een landbouwhervorming dankzij jou."
+                },
+                new Quest
+                {
+                    Name = "Cookie Nebula",
+                    Description = "Bereik 10,000 cookies per seconde",
+                    IsCompleted = () => passiveIncome >= 10000,
+                    CompletionMessage = "Je cookies zijn nu een hemels fenomeen. Mensen beweren dat ze sterrenstelsels proeven bij elke hap."
+                },
+                new Quest
+                {
+                    Name = "Grandma Revolution",
+                    Description = "Koop 100 grandmas",
+                    IsCompleted = () => grandmaCount >= 100,
+                    CompletionMessage = "Grootmoeders hebben een revolutie ontketend. Ze eisen koekjesgelijkheid voor iedereen."
+                },
+                new Quest
+                {
+                    Name = "Global Banking Network",
+                    Description = "Koop 200 banken",
+                    IsCompleted = () => bankCount >= 200,
+                    CompletionMessage = "Je hebt een wereldwijd bankennetwerk opgezet. Financiële stabiliteit is nu jouw nalatenschap."
+                },
+                new Quest
+                {
+                    Name = "Enlightened Temples",
+                    Description = "Koop 20 tempels",
+                    IsCompleted = () => templeCount >= 20,
+                    CompletionMessage = "Je tempels stralen verlichting uit. Het dorp ziet je als een spirituele leider van de cookie-cultus."
+                },
+                new Quest
+                {
+                    Name = "Cookie Galactic Overlord",
+                    Description = "Bereik 50,000 cookies per seconde",
+                    IsCompleted = () => passiveIncome >= 50000,
+                    CompletionMessage = "Je bent nu de heerser van de cookie-galaxie. Wezens van andere werelden smeken om je geheime cookie recept."
+                },
+                new Quest
+                {
+                    Name = "Epic Cursor Uprising",
+                    Description = "Koop 50 cursors",
+                    IsCompleted = () => cursorCount >= 50,
+                    CompletionMessage = "Je cursors hebben een epische opstand veroorzaakt. "
+                },
+                new Quest
+                {
+                    Name = "Eternal Cookie Emperor",
+                    Description = "Bereik 1 miljoen cookies per seconde.",
+                    IsCompleted = () => passiveIncome >= 1000000,
+                    CompletionMessage = "Je bent nu de eeuwige cookie keizer. Zelfs tijd kan je niet stoppen."
+                },
+                new Quest
+                {
+                    Name = "Sacred Temples of Eternity",
+                    Description = "Koop 100 tempels",
+                    IsCompleted = () => templeCount >= 100,
+                    CompletionMessage = "Je tempels zijn nu heiligdommen van eeuwigheid. Het dorp vereert je als de hoeder van tijdloze koekjeswijsheid."
+                }
             };
         }
 
@@ -383,6 +477,8 @@ namespace BlackJack
             {
                 if (!quest.IsCompleted() || quest.IsCompletionMessageShown) continue;
 
+                AddQuestToPopup(quest.Name, quest.CompletionMessage);
+
                 MessageBox.Show(quest.CompletionMessage, "Quest Completed", MessageBoxButton.OK, MessageBoxImage.Information);
                 quest.IsCompletionMessageShown = true;
             }
@@ -489,9 +585,9 @@ namespace BlackJack
         {
             Image newItemImage = new Image
             {
-                Source = new BitmapImage(new Uri(imagePath, UriKind.Relative))
-                //Width = 30,
-                //Height = 30
+                Source = new BitmapImage(new Uri(imagePath, UriKind.Relative)),
+                Width = 30,
+                Height = 30
             };
 
             // Determine the appropriate WrapPanel based on the category
@@ -573,6 +669,23 @@ namespace BlackJack
             UpdateButtonStatus();
         }
 
+        private void btnQuests_Click(object sender, RoutedEventArgs e)
+        {
+            questPopup.IsOpen = !questPopup.IsOpen;
+        }
 
+
+
+        private void AddQuestToPopup(string questName, string notification)
+        {
+            Quest completedQuest = new Quest
+            {
+                QuestName = questName,
+                Notification = notification
+            };
+
+            lstQuestHistoryPopup.Items.Add(completedQuest);
+
+        }
     }
 }
