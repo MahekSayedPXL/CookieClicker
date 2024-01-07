@@ -63,7 +63,7 @@
                 
             <Label Name="lblBakeryName" Content="PXL-Bakery" HorizontalAlignment="Center" Height="60" FontWeight="Bold" FontSize="30" Foreground="#94e4e4" MouseUp="BakeryName_MouseUp"/>
 
-            <ScrollViewer>
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                 <Border Height="60">
                     <Border.Background>
                         <ImageBrush ImageSource="/cloud_background.jpg" TileMode="Tile" Viewport="0,0,1,2" ViewportUnits="RelativeToBoundingBox"/>
@@ -72,7 +72,7 @@
             </Border>
             </ScrollViewer>
 
-            <ScrollViewer>
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                 <Border Height="60">
                     <Border.Background>
                         <ImageBrush ImageSource="/grandma_background.jpg" TileMode="Tile" Viewport="0,0,1,2" ViewportUnits="RelativeToBoundingBox"/>
@@ -81,7 +81,7 @@
             </Border>
             </ScrollViewer>
 
-            <ScrollViewer>
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                 <Border Height="60">
                     <Border.Background>
                         <ImageBrush ImageSource="/farm_background.jpg" TileMode="Tile" Viewport="0,0,1,2" ViewportUnits="RelativeToBoundingBox"/>
@@ -90,7 +90,7 @@
                 </Border>
             </ScrollViewer>
 
-            <ScrollViewer>
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                 <Border Height="60">
                     <Border.Background>
                         <ImageBrush ImageSource="/mine_background.jpg" TileMode="Tile" Viewport="0,0,1,2" ViewportUnits="RelativeToBoundingBox"/>
@@ -99,7 +99,7 @@
                 </Border>
             </ScrollViewer>
 
-            <ScrollViewer>
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                 <Border Height="60">
                     <Border.Background>
                         <ImageBrush ImageSource="/factory_background.jpg" TileMode="Tile" Viewport="0,0,1,2" ViewportUnits="RelativeToBoundingBox"/>
@@ -108,7 +108,7 @@
                 </Border>
             </ScrollViewer>
 
-            <ScrollViewer>
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                 <Border Height="60">
                     <Border.Background>
                         <ImageBrush ImageSource="/bank_background.jpg" TileMode="Tile" Viewport="0,0,1,2" ViewportUnits="RelativeToBoundingBox"/>
@@ -117,7 +117,7 @@
                 </Border>
             </ScrollViewer>
 
-            <ScrollViewer>
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                 <Border Height="60">
                     <Border.Background>
                         <ImageBrush ImageSource="/temple_background.jpg" TileMode="Tile" Viewport="0,0,1,2" ViewportUnits="RelativeToBoundingBox"/>
@@ -223,43 +223,43 @@
                 <Button Name="btnCursorBonus" Height="49" Background="White" Foreground="Gold" IsEnabled="False" Click="btnBonus_Click">
                     <DockPanel Width="100">
                         <Label Name="lblCursorMultiplier" Content="x1"  Foreground="Gold" FontWeight="Bold" FontSize="20" DockPanel.Dock="Left"/>
-                        <Label Name="lblCursorBonusCost" Content="1500" DockPanel.Dock="Right"/>
+                        <Label Name="lblCursorBonusCost" Content="" DockPanel.Dock="Right"/>
                     </DockPanel>
                 </Button>
                 <Button Name="btnGrandmaBonus" Height="49" Background="White" Foreground="Gold" IsEnabled="False" Click="btnBonus_Click">
                     <DockPanel Width="100">
                         <Label Name="lblGrandmaMultiplier" Content="x1"  Foreground="Gold" FontWeight="Bold" FontSize="20" DockPanel.Dock="Left"/>
-                        <Label Name="lblGrandmaBonusCost" Content="10000" DockPanel.Dock="Right"/>
+                        <Label Name="lblGrandmaBonusCost" Content="" DockPanel.Dock="Right"/>
                     </DockPanel>
                 </Button>
                 <Button Name="btnFarmBonus" Height="49" Background="White" Foreground="Gold" IsEnabled="False" Click="btnBonus_Click">
                     <DockPanel Width="100">
                         <Label  Name="lblFarmMultiplier" Content="x1"  Foreground="Gold" FontWeight="Bold" FontSize="20" DockPanel.Dock="Left"/>
-                        <Label Name="lblFarmBonusCost" Content="110000" DockPanel.Dock="Right"/>
+                        <Label Name="lblFarmBonusCost" Content="" DockPanel.Dock="Right"/>
                     </DockPanel>
                 </Button>
                 <Button Name="btnMineBonus" Height="49" Background="White" Foreground="Gold" IsEnabled="False" Click="btnBonus_Click">
                     <DockPanel Width="100">
                         <Label  Name="lblMineMultiplier" Content="x1"  Foreground="Gold" FontWeight="Bold" FontSize="20" DockPanel.Dock="Left"/>
-                        <Label Name="lblMineBonusCost" Content="1200000" DockPanel.Dock="Right"/>
+                        <Label Name="lblMineBonusCost" Content="" DockPanel.Dock="Right"/>
                     </DockPanel>
                 </Button>
                 <Button Name="btnFactoryBonus" Height="49" Background="White" Foreground="Gold" IsEnabled="False" Click="btnBonus_Click">
                     <DockPanel Width="100">
                         <Label  Name="lblFactoryMultiplier" Content="x1"  Foreground="Gold" FontWeight="Bold" FontSize="20" DockPanel.Dock="Left"/>
-                        <Label Name="lblFactoryBonusCost" Content="13000000" DockPanel.Dock="Right"/>
+                        <Label Name="lblFactoryBonusCost" Content="" DockPanel.Dock="Right"/>
                     </DockPanel>
                 </Button>
                 <Button Name="btnBankBonus" Height="49" Background="White" Foreground="Gold" IsEnabled="False" Click="btnBonus_Click">
                     <DockPanel Width="100">
                         <Label  Name="lblBankMultiplier" Content="x1"  Foreground="Gold" FontWeight="Bold" FontSize="20" DockPanel.Dock="Left"/>
-                        <Label Name="lblBankBonusCost" Content="140000000" DockPanel.Dock="Right"/>
+                        <Label Name="lblBankBonusCost" Content="" DockPanel.Dock="Right"/>
                     </DockPanel>
                 </Button>
                 <Button Name="btnTempleBonus" Height="49" Background="White" Foreground="Gold" IsEnabled="False" Click="btnBonus_Click">
                     <DockPanel Width="100">
                         <Label  Name="lblTempleMultiplier" Content="x1"  Foreground="Gold" FontWeight="Bold" FontSize="20" DockPanel.Dock="Left"/>
-                        <Label Name="lblTempleBonusCost" Content="2000000000" DockPanel.Dock="Right"/>
+                        <Label Name="lblTempleBonusCost" Content="" DockPanel.Dock="Right"/>
                     </DockPanel>
                 </Button>
 

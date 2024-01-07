@@ -588,7 +588,6 @@ namespace BlackJack
                                   bankCount * bankSpeed +
                                   templeCount * templeSpeed;
 
-            //passiveIncome = (float)Math.Round(passiveIncome, 2);
             lblCookiesPerSec.Content = passiveIncome.ToString();
         }
 
@@ -718,8 +717,8 @@ namespace BlackJack
             Image newItemImage = new Image
             {
                 Source = new BitmapImage(new Uri(imagePath, UriKind.Relative)),
-                Width = 30,
-                Height = 30
+                Width = 50,
+                Height = 50
             };
 
             // Determine the appropriate WrapPanel based on the category
