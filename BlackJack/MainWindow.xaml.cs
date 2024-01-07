@@ -42,12 +42,12 @@ namespace BlackJack
         double score = 999990;
 
         int cursorCost = 15;
-        int grandmaCost = 10;
-        int farmCost = 15;
-        int mineCost = 20;
-        int factoryCost = 25;
-        int bankCost = 30;
-        int templeCost = 35;
+        int grandmaCost = 100;
+        int farmCost = 1100;
+        int mineCost = 12000;
+        int factoryCost = 130000;
+        int bankCost = 1400000;
+        int templeCost = 20000000;
 
         int cursorCount = 0;
         int grandmaCount = 0;
@@ -60,7 +60,7 @@ namespace BlackJack
         double cursorSpeed = 0.1;
         double grandmaSpeed = 1;
         double farmSpeed = 8;
-        double mineSpeed = 41;
+        double mineSpeed = 47;
         double factorySpeed = 260;
         double bankSpeed = 1400;
         double templeSpeed = 7800;
@@ -878,27 +878,27 @@ namespace BlackJack
             {
                 btnCursorBonus.IsEnabled = true;
             }
-            if (score >= grandmaBonusCost)
+            if (score >= grandmaBonusCost && grandmaCount >= 1)
             {
                 btnGrandmaBonus.IsEnabled = true;
             }
-            if (score >= farmBonusCost)
+            if (score >= farmBonusCost && farmCount >= 1)
             {
                 btnFarmBonus.IsEnabled = true;
             }
-            if (score >= mineBonusCost)
+            if (score >= mineBonusCost && mineCount >= 1)
             {
                 btnMineBonus.IsEnabled = true;
             }
-            if (score >= factoryBonusCost)
+            if (score >= factoryBonusCost && factoryCount >= 1)
             {
                 btnFactoryBonus.IsEnabled = true;
             }
-            if (score >= bankBonusCost)
+            if (score >= bankBonusCost && bankCount >= 1)
             {
                 btnBankBonus.IsEnabled = true;
             }
-            if (score >= templeBonusCost)
+            if (score >= templeBonusCost && templeCount >= 1)
             {
                 btnTempleBonus.IsEnabled = true;
             }
