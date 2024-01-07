@@ -8,9 +8,10 @@
         Title="Cookie Clicker" Height="450" Width="800">
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.Background>
@@ -33,19 +34,26 @@
             </Border>
         </Popup>
 
-
         <Viewbox Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <StackPanel VerticalAlignment="Center">
+                <Viewbox>
+                    <DockPanel HorizontalAlignment="Center">
+                        <Label Content="Cookies: " FontSize="25" FontWeight="Bold" Foreground="White"/>
+                        <Label Name="lblScore" Content="0" FontSize="25" FontWeight="Bold" Foreground="White"/>
+                    </DockPanel>
+                </Viewbox>
+                <Viewbox>
+                    <DockPanel HorizontalAlignment="Center">
+                        <Label Content="Cookies per second: " FontWeight="Bold" Foreground="White"/>
+                        <Label Name="lblCookiesPerSec" Content="0.0" Foreground="White"/>
+                    </DockPanel>
+                </Viewbox>    
                 <Canvas Name="mainCanvas" Background="Transparent"/>
-                <DockPanel HorizontalAlignment="Center">
-                    <Label Content="Cookies: " FontSize="25" FontWeight="Bold" Foreground="White"/>
-                    <Label Name="lblScore" Content="0" FontSize="25" FontWeight="Bold" Foreground="White"/>
-                </DockPanel>
-                <DockPanel HorizontalAlignment="Center">
-                    <Label Content="Cookies per second: " FontWeight="Bold" Foreground="White"/>
-                    <Label Name="lblCookiesPerSec" Content="0.0" Foreground="White"/>
-                </DockPanel>
-                <Image Name="imgCookie" Source="/cupcake-removebg-preview.png" Width="260" Height="260" MouseUp="CookiePress_MouseUp" MouseDown="CookieLose_MouseDown"/>
+                <Viewbox>
+                    <Grid Height="250" Width="250">
+                        <Image Name="imgCookie" Source="/cupcake-removebg-preview.png" Width="260" Height="260" MouseUp="CookiePress_MouseUp" MouseDown="CookieLose_MouseDown"/>
+                    </Grid>
+                </Viewbox>
                 <Button Content="Quests" Height="50" Background="Gold" Foreground="White" FontSize="20" FontWeight="Bold" Click="btnQuests_Click"/>
             </StackPanel>
         </Viewbox>
@@ -55,56 +63,70 @@
                 
             <Label Name="lblBakeryName" Content="PXL-Bakery" HorizontalAlignment="Center" Height="60" FontWeight="Bold" FontSize="30" Foreground="#94e4e4" MouseUp="BakeryName_MouseUp"/>
 
-            <Border Height="60">
-                <Border.Background>
-                    <ImageBrush ImageSource="/cloud_background.jpg" TileMode="Tile" Viewport="0,0,1,2" ViewportUnits="RelativeToBoundingBox"/>
-                </Border.Background>
+            <ScrollViewer>
+                <Border Height="60">
+                    <Border.Background>
+                        <ImageBrush ImageSource="/cloud_background.jpg" TileMode="Tile" Viewport="0,0,1,2" ViewportUnits="RelativeToBoundingBox"/>
+                    </Border.Background>
                 <WrapPanel Name="wrapPanelCursor" Orientation="Horizontal"/>
             </Border>
+            </ScrollViewer>
 
-            <Border Height="60">
-                <Border.Background>
-                    <ImageBrush ImageSource="/grandma_background.jpg" TileMode="Tile" Viewport="0,0,1,2" ViewportUnits="RelativeToBoundingBox"/>
-                </Border.Background>
-                    <WrapPanel Name="wrapPanelGrandma" Orientation="Horizontal"/>
+            <ScrollViewer>
+                <Border Height="60">
+                    <Border.Background>
+                        <ImageBrush ImageSource="/grandma_background.jpg" TileMode="Tile" Viewport="0,0,1,2" ViewportUnits="RelativeToBoundingBox"/>
+                    </Border.Background>
+                <WrapPanel Name="wrapPanelGrandma" Orientation="Horizontal"/>
             </Border>
+            </ScrollViewer>
 
-            <Border Height="60">
-                <Border.Background>
-                    <ImageBrush ImageSource="/farm_background.jpg" TileMode="Tile" Viewport="0,0,1,2" ViewportUnits="RelativeToBoundingBox"/>
+            <ScrollViewer>
+                <Border Height="60">
+                    <Border.Background>
+                        <ImageBrush ImageSource="/farm_background.jpg" TileMode="Tile" Viewport="0,0,1,2" ViewportUnits="RelativeToBoundingBox"/>
                     </Border.Background>
                     <WrapPanel Name="wrapPanelFarm" Orientation="Horizontal"/>
                 </Border>
+            </ScrollViewer>
 
-            <Border Height="60">
-                <Border.Background>
-                    <ImageBrush ImageSource="/mine_background.jpg" TileMode="Tile" Viewport="0,0,1,2" ViewportUnits="RelativeToBoundingBox"/>
+            <ScrollViewer>
+                <Border Height="60">
+                    <Border.Background>
+                        <ImageBrush ImageSource="/mine_background.jpg" TileMode="Tile" Viewport="0,0,1,2" ViewportUnits="RelativeToBoundingBox"/>
                     </Border.Background>
                     <WrapPanel Name="wrapPanelMine" Orientation="Horizontal"/>
                 </Border>
+            </ScrollViewer>
 
-            <Border Height="60">
-                <Border.Background>
-                    <ImageBrush ImageSource="/factory_background.jpg" TileMode="Tile" Viewport="0,0,1,2" ViewportUnits="RelativeToBoundingBox"/>
+            <ScrollViewer>
+                <Border Height="60">
+                    <Border.Background>
+                        <ImageBrush ImageSource="/factory_background.jpg" TileMode="Tile" Viewport="0,0,1,2" ViewportUnits="RelativeToBoundingBox"/>
                     </Border.Background>
                     <WrapPanel Name="wrapPanelFactory" Orientation="Horizontal"/>
                 </Border>
+            </ScrollViewer>
 
-            <Border Height="60">
-                <Border.Background>
-                    <ImageBrush ImageSource="/bank_background.jpg" TileMode="Tile" Viewport="0,0,1,2" ViewportUnits="RelativeToBoundingBox"/>
-                </Border.Background>
+            <ScrollViewer>
+                <Border Height="60">
+                    <Border.Background>
+                        <ImageBrush ImageSource="/bank_background.jpg" TileMode="Tile" Viewport="0,0,1,2" ViewportUnits="RelativeToBoundingBox"/>
+                    </Border.Background>
                 <WrapPanel Name="wrapPanelBank" Orientation="Horizontal"/>
-            </Border>
+                </Border>
+            </ScrollViewer>
 
-            <Border Height="60">
-                <Border.Background>
-                    <ImageBrush ImageSource="/temple_background.jpg" TileMode="Tile" Viewport="0,0,1,2" ViewportUnits="RelativeToBoundingBox"/>
-                </Border.Background>
-                <WrapPanel Name="wrapPanelTemple" Orientation="Horizontal"/>
-            </Border>
+            <ScrollViewer>
+                <Border Height="60">
+                    <Border.Background>
+                        <ImageBrush ImageSource="/temple_background.jpg" TileMode="Tile" Viewport="0,0,1,2" ViewportUnits="RelativeToBoundingBox"/>
+                    </Border.Background>
+                    <WrapPanel Name="wrapPanelTemple" Orientation="Horizontal"/>
+                </Border>
+            </ScrollViewer>
 
-        </StackPanel>
+            </StackPanel>
         </Viewbox>
 
         <Viewbox Grid.Column="2" Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -114,7 +136,7 @@
 
                     <Button Name="btnCursor" Height="60" Click="btnBuy_Click" Background="White">
                         <DockPanel>
-                            <Image Source="/cursor-removebg-preview (1).png" Height="90" Width="50"/>
+                            <Image Source="/cursor-removebg-preview (1).png" Width="50"/>
                             <StackPanel>
                                 <Label Content="Cursor" Foreground="#eb869f" FontWeight="Bold" FontSize="20" Width="180" HorizontalContentAlignment="Center"/>
                                 <Label Name="lblCursorCost" Content="15"/>
@@ -192,5 +214,57 @@
                 </StackPanel>
             </ScrollViewer>
         </Viewbox>
+
+        <Viewbox Grid.Column="3" Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <StackPanel  Grid.Column="3" Background="Gold">
+
+                <Label Content="Bonus Store" Height="49" FontWeight="Bold" FontSize="20" Foreground="White" HorizontalAlignment="Center"/>
+
+                <Button Name="btnCursorBonus" Height="49" Background="White" Foreground="Gold" IsEnabled="False" Click="btnBonus_Click">
+                    <DockPanel Width="100">
+                        <Label Name="lblCursorMultiplier" Content="x1"  Foreground="Gold" FontWeight="Bold" FontSize="20" DockPanel.Dock="Left"/>
+                        <Label Name="lblCursorBonusCost" Content="1500" DockPanel.Dock="Right"/>
+                    </DockPanel>
+                </Button>
+                <Button Name="btnGrandmaBonus" Height="49" Background="White" Foreground="Gold" IsEnabled="False" Click="btnBonus_Click">
+                    <DockPanel Width="100">
+                        <Label Name="lblGrandmaMultiplier" Content="x1"  Foreground="Gold" FontWeight="Bold" FontSize="20" DockPanel.Dock="Left"/>
+                        <Label Name="lblGrandmaBonusCost" Content="10000" DockPanel.Dock="Right"/>
+                    </DockPanel>
+                </Button>
+                <Button Name="btnFarmBonus" Height="49" Background="White" Foreground="Gold" IsEnabled="False" Click="btnBonus_Click">
+                    <DockPanel Width="100">
+                        <Label  Name="lblFarmMultiplier" Content="x1"  Foreground="Gold" FontWeight="Bold" FontSize="20" DockPanel.Dock="Left"/>
+                        <Label Name="lblFarmBonusCost" Content="110000" DockPanel.Dock="Right"/>
+                    </DockPanel>
+                </Button>
+                <Button Name="btnMineBonus" Height="49" Background="White" Foreground="Gold" IsEnabled="False" Click="btnBonus_Click">
+                    <DockPanel Width="100">
+                        <Label  Name="lblMineMultiplier" Content="x1"  Foreground="Gold" FontWeight="Bold" FontSize="20" DockPanel.Dock="Left"/>
+                        <Label Name="lblMineBonusCost" Content="1200000" DockPanel.Dock="Right"/>
+                    </DockPanel>
+                </Button>
+                <Button Name="btnFactoryBonus" Height="49" Background="White" Foreground="Gold" IsEnabled="False" Click="btnBonus_Click">
+                    <DockPanel Width="100">
+                        <Label  Name="lblFactoryMultiplier" Content="x1"  Foreground="Gold" FontWeight="Bold" FontSize="20" DockPanel.Dock="Left"/>
+                        <Label Name="lblFactoryBonusCost" Content="13000000" DockPanel.Dock="Right"/>
+                    </DockPanel>
+                </Button>
+                <Button Name="btnBankBonus" Height="49" Background="White" Foreground="Gold" IsEnabled="False" Click="btnBonus_Click">
+                    <DockPanel Width="100">
+                        <Label  Name="lblBankMultiplier" Content="x1"  Foreground="Gold" FontWeight="Bold" FontSize="20" DockPanel.Dock="Left"/>
+                        <Label Name="lblBankBonusCost" Content="140000000" DockPanel.Dock="Right"/>
+                    </DockPanel>
+                </Button>
+                <Button Name="btnTempleBonus" Height="49" Background="White" Foreground="Gold" IsEnabled="False" Click="btnBonus_Click">
+                    <DockPanel Width="100">
+                        <Label  Name="lblTempleMultiplier" Content="x1"  Foreground="Gold" FontWeight="Bold" FontSize="20" DockPanel.Dock="Left"/>
+                        <Label Name="lblTempleBonusCost" Content="2000000000" DockPanel.Dock="Right"/>
+                    </DockPanel>
+                </Button>
+
+            </StackPanel>
+        </Viewbox>
+        
     </Grid>
 </Window>

@@ -20,18 +20,28 @@ namespace BlackJack
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// ------------------------------------------------
+    /// Description: Documentatie Cookie Clicker project
+    /// ------------------------------------------------
+
+    /// <summary>
+    /// Represents the main window of the cookie-clicker game
+    /// </summary>
     public partial class MainWindow : Window
     {
-        private float passiveIncome = 0.0f;
+        private double passiveIncome = 0.0f;
+        //Timer for updating the passive income
         private DispatcherTimer incomeTimer;
 
         private Random random = new Random();
+        //timer for managing the appearance of golden cookies
         private DispatcherTimer goldenCookieTimer;
+        //Indicating whether a golden cookie is currently active
         private bool isGoldenCookieActive = false;
 
-        double score = 0;
+        double score = 999990;
 
-        int cursorCost = 1;
+        int cursorCost = 15;
         int grandmaCost = 10;
         int farmCost = 15;
         int mineCost = 20;
@@ -47,8 +57,36 @@ namespace BlackJack
         int bankCount = 0;
         int templeCount = 0;
 
+        double cursorSpeed = 0.1;
+        double grandmaSpeed = 1;
+        double farmSpeed = 8;
+        double mineSpeed = 41;
+        double factorySpeed = 260;
+        double bankSpeed = 1400;
+        double templeSpeed = 7800;
+
+        double cursorMultiplier = 1;
+        double grandmaMultiplier = 1;
+        double farmMultiplier = 1;
+        double mineMultiplier = 1;
+        double factoryMultiplier = 1;
+        double bankMultiplier = 1;
+        double templeMultiplier = 1;
+
+        double cursorBonusCost = 0;
+        double grandmaBonusCost = 0;
+        double farmBonusCost = 0;
+        double mineBonusCost = 0;
+        double factoryBonusCost = 0;
+        double bankBonusCost = 0;
+        double templeBonusCost = 0;
+
+        //Quests to achieve in the game
         private List<Quest> quests;
 
+        /// <summary>
+        /// Represents a quest in the game
+        /// </summary>
         public class Quest
         {
             public string Name { get; set; }
@@ -77,6 +115,9 @@ namespace BlackJack
             goldenCookieTimer.Interval = TimeSpan.FromMinutes(1);
             goldenCookieTimer.Start();
 
+            //bonusManager = new BonusManager(this);
+
+            // Initialize quests for the game
             quests = new List<Quest>
             {
                 new Quest
@@ -222,14 +263,20 @@ namespace BlackJack
             };
         }
 
+        /// <summary>
+        /// Event handler for the cookie-clicking action.
+        /// </summary>
+        /// <param name="sender">The object that triggered the event.</param>
+        /// <param name="e">Mouse button event arguments.</param>
         private void CookiePress_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            if (imgCookie.Width < 260)
+            score += 1;
+            if (imgCookie.ActualWidth < 260)
             {
                 imgCookie.Width += 10;
             }
 
-            if (imgCookie.Height < 260)
+            if (imgCookie.ActualHeight < 260)
             {
                 imgCookie.Height += 10;
             }
@@ -238,21 +285,28 @@ namespace BlackJack
             UpdateButtonStatus();
         }
 
+        /// <summary>
+        /// Event handler for the cookie-losing action.
+        /// </summary>
+        /// <param name="sender">The object that triggered the event.</param>
+        /// <param name="e">Mouse button event arguments.</param>
         private void CookieLose_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            score += 1;
 
-            if (imgCookie.Width > 250)
+            if (imgCookie.ActualWidth > 250)
             {
                 imgCookie.Width -= 10;
             }
 
-            if (imgCookie.Height > 250)
+            if (imgCookie.ActualHeight > 250)
             {
                 imgCookie.Height -= 10;
             }
         }
 
+        /// <summary>
+        /// Updates the text displaying the current score based on the score value.
+        /// </summary>
         private void UpdateScoreText()
         {
             if (score < 1000)
@@ -271,6 +325,17 @@ namespace BlackJack
             }
         }
 
+        /// <summary>
+        /// <para>
+        /// Calculates the total cookies collected
+        /// </para>
+        /// <para>
+        /// Updates button visibility and status based on the current score
+        /// </para>
+        /// <para>
+        /// Manages the visibility of bonus buttons.
+        /// </para>
+        /// </summary>
         private void UpdateButtonStatus()
         {
             double totalCookiesCollected = score + (cursorCount * cursorCost) +
@@ -355,6 +420,13 @@ namespace BlackJack
             }
         }
 
+        /// <summary>
+        /// <para>
+        /// Handles the click event of the "Buy" button for different game elements
+        /// </para>
+        /// </summary>
+        /// <param name="sender">The object that triggered the event.</param>
+        /// <param name="e">Routed event arguments.</param>
         private void btnBuy_Click(object sender, RoutedEventArgs e)
         {
             Button clickedButton = (Button)sender;
@@ -457,14 +529,31 @@ namespace BlackJack
 
             UpdateScoreText();
             UpdateButtonStatus();
+            UpdateBonusButtonStatus();
         }
 
+        /// <summary>
+        /// Calculates the cost of purchasing additional units of a game element based on its count and basic cost.
+        /// </summary>
+        /// <param name="count">The current count of the game element.</param>
+        /// <param name="basicCost">The basic cost of the game element.</param>
+        /// <returns>The updated cost after calculation.</returns>
         private int CalculateCost(int count, int basicCost)
         {
             double result = basicCost * Math.Pow(1.15, count);
             return (int)Math.Ceiling(result);
         }
 
+        /// <summary>
+        /// <para>
+        /// Updates the passive income, score, score text, button status, and checks and displays completed quests
+        /// </para>
+        /// <para>
+        /// Event handler for the income timer tick.
+        /// </para>
+        /// </summary>
+        /// <param name="sender">The object that triggered the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void IncomeTimer_Tick(object sender, EventArgs e)
         {
             UpdatePassiveIncome();
@@ -484,23 +573,33 @@ namespace BlackJack
             }
         }
 
+        /// <summary>
+        /// <para>
+        /// Updates the passive income based on the counts of different game elements
+        /// </para>
+        /// </summary>
         private void UpdatePassiveIncome()
         {
-            passiveIncome = cursorCount * 0.1f +
-                                  grandmaCount * 1f +
-                                  farmCount * 8f +
-                                  mineCount * 47f +
-                                  factoryCount * 260f +
-                                  bankCount * 1400f +
-                                  templeCount * 7800f;
+            passiveIncome = cursorCount * cursorSpeed +
+                                  grandmaCount * grandmaSpeed +
+                                  farmCount * farmSpeed +
+                                  mineCount * mineSpeed +
+                                  factoryCount * factorySpeed +
+                                  bankCount * bankSpeed +
+                                  templeCount * templeSpeed;
 
             //passiveIncome = (float)Math.Round(passiveIncome, 2);
             lblCookiesPerSec.Content = passiveIncome.ToString();
         }
 
+        /// <summary>
+        /// Formats a large number by converting it into a string with the corresponding term (million, billion, etc.).
+        /// </summary>
+        /// <param name="number">The number to be formatted.</param>
+        /// <returns>The formatted string representing the large number.</returns>
         private string NameLargeNumber(double number)
         {
-            string[] terms = { "", "Miljoen", "Miljard", "Biljoen", "Biljard", "Triljoen" };
+            string[] terms = { "", "", "Miljoen", "Miljard", "Biljoen", "Biljard", "Triljoen" };
 
             int termsIndex = 0;
             while (number >= 1000 && termsIndex < terms.Length - 1)
@@ -509,24 +608,47 @@ namespace BlackJack
                 termsIndex++;
             }
 
-            string largeNumber = $"{number:N3} {terms[termsIndex]}";
+            string formattedNumber = $"{number:N3}";
+
+            // Extract the first three digits of the remainder
+            int remainder = (int)(number % 1000);
+            string remainderString = remainder.ToString().PadLeft(3, '0');
+
+            // Concatenate the formatted number with the remainder and the corresponding term
+            string largeNumber = $"{formattedNumber} {terms[termsIndex]}";
             return largeNumber;
         }
 
+        /// <summary>
+        /// Formats a number by inserting spaces for better readability.
+        /// </summary>
+        /// <param name="number">The number to be formatted.</param>
+        /// <returns>The formatted string with spaces for better readability.</returns>
         private string NumberWithSpace(double number)
         {
             string spaceNumber = $"{number:N0}".Replace(".", " ");
             return spaceNumber;
         }
 
+        /// <summary>
+        /// Represents an input dialog window with a text box, OK, and Cancel buttons.
+        /// </summary>
         public class InputDialog : Window
         {
             private TextBox txtInput;
             private Button btnOK;
             private Button btnCancel;
 
+            /// <summary>
+            /// Gets the input value provided by the user.
+            /// </summary>
             public string InputValue { get; private set; }
 
+            /// <summary>
+            /// Initializes a new instance of the InputDialog class.
+            /// </summary>
+            /// <param name="title">The title of the input dialog window.</param>
+            /// <param name="prompt">The prompt displayed to the user.</param>
             public InputDialog(string title, string prompt)
             {
                 Title = title;
@@ -561,6 +683,11 @@ namespace BlackJack
             }
         }
 
+        /// <summary>
+        /// Event handler for changing the bakery name on mouse click.
+        /// </summary>
+        /// <param name="sender">The object that triggered the event.</param>
+        /// <param name="e">Mouse button event arguments.</param>
         private void BakeryName_MouseUp(object sender, MouseButtonEventArgs e)
         {
             InputDialog dialog = new InputDialog("Change Bakery Name", "Enter a new bakery name:");
@@ -581,6 +708,11 @@ namespace BlackJack
             }
         }
 
+        /// <summary>
+        /// Buys an item in the game and adds its image to the appropriate WrapPanel.
+        /// </summary>
+        /// <param name="imagePath">The image path of the item.</param>
+        /// <param name="category">The category of the item.</param>
         private void BuyItem(string imagePath, string category)
         {
             Image newItemImage = new Image
@@ -597,6 +729,11 @@ namespace BlackJack
             targetWrapPanel.Children.Add(newItemImage);
         }
 
+        /// <summary>
+        /// Gets the corresponding WrapPanel based on the item category.
+        /// </summary>
+        /// <param name="category">The category of the item.</param>
+        /// <returns>The WrapPanel associated with the specified category.</returns>
         private WrapPanel GetWrapPanelByCategory(string category)
         {
             // Choose the correct WrapPanel based on the category
@@ -622,6 +759,16 @@ namespace BlackJack
             }
         }
 
+        /// <summary>
+        /// <para>
+        /// Event handler for the Golden Cookie timer tick event.
+        /// </para>
+        /// <para>
+        /// Spawns a Golden Cookie with a 30% chance if one is not already active
+        /// </para>
+        /// </summary>
+        /// <param name="sender">The object that triggered the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void GoldenCookieTimer_Tick(object sender, EventArgs e)
         {
             if (random.NextDouble() < 0.3 && !isGoldenCookieActive)
@@ -630,6 +777,9 @@ namespace BlackJack
             }
         }
 
+        /// <summary>
+        /// Spawns a Golden Cookie on the canvas with a timer for automatic disappearance.
+        /// </summary>
         private void SpawnGoldenCookie()
         {
             isGoldenCookieActive = true;
@@ -658,6 +808,16 @@ namespace BlackJack
             disappearTimer.Start();
         }
 
+        /// <summary>
+        /// <para>
+        /// Event handler for the Golden Cookie image mouse-up event
+        /// </para>
+        /// <para>
+        /// Removes the Golden Cookie, grants bonus score, and updates UI elements
+        /// </para>
+        /// </summary>
+        /// <param name="sender">The object that triggered the event.</param>
+        /// <param name="e">Mouse button event arguments.</param>
         private void GoldenCookieImage_MouseUp(object sender, MouseButtonEventArgs e)
         {
             mainCanvas.Children.Remove((UIElement)sender);
@@ -669,13 +829,26 @@ namespace BlackJack
             UpdateButtonStatus();
         }
 
+        /// <summary>
+        /// <para>
+        /// Event handler for the "Quests" button click event.
+        /// </para>
+        /// <para>
+        /// Toggles the visibility of the quest popup.
+        /// </para>
+        /// </summary>
+        /// <param name="sender">The object that triggered the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void btnQuests_Click(object sender, RoutedEventArgs e)
         {
             questPopup.IsOpen = !questPopup.IsOpen;
         }
 
-
-
+        /// <summary>
+        /// Adds a completed quest to the quest history popup.
+        /// </summary>
+        /// <param name="questName">The name of the completed quest.</param>
+        /// <param name="notification">The notification message for the completed quest.</param>
         private void AddQuestToPopup(string questName, string notification)
         {
             Quest completedQuest = new Quest
@@ -687,5 +860,223 @@ namespace BlackJack
             lstQuestHistoryPopup.Items.Add(completedQuest);
 
         }
+
+        /// <summary>
+        /// Updates the visibility and enablement of bonus buttons based on the total cookies collected.
+        /// </summary>
+        private void UpdateBonusButtonStatus()
+        {
+           double totalCookiesCollected = score + (cursorCount * cursorCost) +
+                                  (grandmaCount * grandmaCost) + (farmCount * farmCost) +
+                                  (mineCount * mineCost) + (factoryCount * factoryCost) +
+                                  (bankCount * bankCost) + (templeCount * templeCost);
+
+
+            // Enable and visible bonus buttons based on score
+          
+            if (score >= cursorBonusCost && cursorCount >= 1)
+            {
+                btnCursorBonus.IsEnabled = true;
+            }
+            if (score >= grandmaBonusCost)
+            {
+                btnGrandmaBonus.IsEnabled = true;
+            }
+            if (score >= farmBonusCost)
+            {
+                btnFarmBonus.IsEnabled = true;
+            }
+            if (score >= mineBonusCost)
+            {
+                btnMineBonus.IsEnabled = true;
+            }
+            if (score >= factoryBonusCost)
+            {
+                btnFactoryBonus.IsEnabled = true;
+            }
+            if (score >= bankBonusCost)
+            {
+                btnBankBonus.IsEnabled = true;
+            }
+            if (score >= templeBonusCost)
+            {
+                btnTempleBonus.IsEnabled = true;
+            }
+
+            btnCursorBonus.Visibility = Visibility.Hidden;
+            btnGrandmaBonus.Visibility = Visibility.Hidden;
+            btnFarmBonus.Visibility = Visibility.Hidden;
+            btnMineBonus.Visibility = Visibility.Hidden;
+            btnFactoryBonus.Visibility = Visibility.Hidden;
+            btnBankBonus.Visibility = Visibility.Hidden;
+            btnTempleBonus.Visibility = Visibility.Hidden;
+
+            if (totalCookiesCollected >= cursorCost)
+            {
+                btnCursorBonus.Visibility = Visibility.Visible;
+            }
+            if (totalCookiesCollected >= grandmaCost)
+            {
+                btnGrandmaBonus.Visibility = Visibility.Visible;
+            }
+            if (totalCookiesCollected >= farmCost)
+            {
+                btnFarmBonus.Visibility = Visibility.Visible;
+            }
+            if (totalCookiesCollected >= mineCost)
+            {
+                btnMineBonus.Visibility = Visibility.Visible;
+            }
+            if (totalCookiesCollected >= factoryCost)
+            {
+                btnFactoryBonus.Visibility = Visibility.Visible;
+            }
+            if (totalCookiesCollected >= bankCost)
+            {
+                btnBankBonus.Visibility = Visibility.Visible;
+            }
+            if (totalCookiesCollected >= templeCost)
+            {
+                btnTempleBonus.Visibility = Visibility.Visible;
+            }
+        }
+
+        /// <summary>
+        /// Updates the bonus multiplier, speed, and the UI label for the bonus.
+        /// </summary>
+        /// <param name="multiplierBonus">The bonus multiplier to be updated.</param>
+        /// <param name="lblBonusMultiplier">The label displaying the bonus multiplier.</param>
+        /// <param name="speed">The speed value to be updated.</param>
+        /// <returns>Returns void.</returns>
+        private void BonusMultiplierUpdate(ref double multiplierBonus, Label lblBonusMultiplier, ref double speed)
+        {
+            speed *= 2;
+
+            multiplierBonus *= 2;
+            lblBonusMultiplier.Content = "x" + multiplierBonus;
+        }
+
+        /// <summary>
+        /// Calculates the cost of a bonus based on the base cost and bonus multiplier.
+        /// </summary>
+        /// <param name="baseCost">The base cost of the item.</param>
+        /// <param name="multiplierBonus">The bonus multiplier affecting the cost.</param>
+        /// <returns>The calculated bonus cost.</returns>
+        private double CalculateBonusCost(int baseCost, double bonusCost, double multiplierBonus)
+        {
+            if (multiplierBonus == 1)
+            {
+                bonusCost = baseCost * 100;
+            }
+            else if (multiplierBonus == 2)
+            {
+                bonusCost = baseCost * 500;
+            }
+            else
+            {
+                bonusCost *= 10;
+            }
+
+            return bonusCost;
+        }
+
+        // <summary>
+        /// Handles the click event of the bonus buttons, applies bonus multipliers, deducts the cost, and updates the UI.
+        /// </summary>
+        /// <param name="sender">The object that triggered the event.</param>
+        /// <param name="e">Routed event arguments.</param>
+        /// <returns>Returns void.</returns>
+        private void btnBonus_Click(object sender, RoutedEventArgs e)
+        {
+            Button clickedButton = (Button)sender;
+
+
+            switch (clickedButton.Name)
+            {
+                case "btnCursorBonus":
+                    cursorBonusCost = CalculateBonusCost(cursorCost, cursorBonusCost, cursorMultiplier);
+
+                    if (score > cursorBonusCost)
+                    {
+                        BonusMultiplierUpdate(ref cursorMultiplier, lblCursorMultiplier, ref cursorSpeed);
+                        score -= cursorBonusCost;
+                        lblCursorBonusCost.Content = cursorBonusCost.ToString();
+                    }
+                    break;
+
+                case "btnGrandmaBonus":
+                    grandmaBonusCost = CalculateBonusCost(grandmaCost, grandmaBonusCost, grandmaMultiplier);
+
+                    if (score > grandmaBonusCost)
+                    {
+                        BonusMultiplierUpdate(ref grandmaMultiplier, lblGrandmaMultiplier, ref grandmaSpeed);
+                        score -= grandmaBonusCost;
+                        lblGrandmaBonusCost.Content = grandmaBonusCost.ToString();
+                    }
+                    break;
+
+                case "btnFarmBonus":
+                    farmBonusCost = CalculateBonusCost(farmCost, farmBonusCost, farmMultiplier);
+
+                    if (score > farmBonusCost)
+                    {
+                        BonusMultiplierUpdate(ref farmMultiplier, lblFarmMultiplier, ref farmSpeed);
+                        score -= farmBonusCost;
+                        lblFarmBonusCost.Content = farmBonusCost.ToString();
+                    }
+                    break;
+
+                case "btnMineBonus":
+                    mineBonusCost = CalculateBonusCost(mineCost, mineBonusCost, mineMultiplier);
+
+                    if (score > mineBonusCost)
+                    {
+                        BonusMultiplierUpdate(ref mineMultiplier, lblMineMultiplier, ref mineSpeed);
+                        score -= mineBonusCost;
+                        lblMineBonusCost.Content = mineBonusCost.ToString();
+                    }
+                    break;
+
+                case "btnFactoryBonus":
+                    factoryBonusCost = CalculateBonusCost(factoryCost, farmBonusCost, factoryMultiplier);
+
+                    if (score > factoryBonusCost)
+                    {
+                        BonusMultiplierUpdate(ref factoryMultiplier, lblFactoryMultiplier, ref factorySpeed);
+                        score -= factoryBonusCost;
+                        lblFactoryBonusCost.Content = factoryBonusCost.ToString();
+                    }
+                    break;
+
+                case "btnBankBonus":
+                    bankBonusCost = CalculateBonusCost(bankCost, bankBonusCost, bankMultiplier);
+
+                    if (score > bankBonusCost)
+                    {
+                        BonusMultiplierUpdate(ref bankMultiplier, lblBankMultiplier, ref bankSpeed);
+                        score -= bankBonusCost;
+                        lblBankBonusCost.Content = bankBonusCost.ToString();
+                    }
+                    break;
+
+                case "btnTempleBonus":
+                    templeBonusCost = CalculateBonusCost(templeCost, templeBonusCost, templeMultiplier);
+
+                    if (score > templeBonusCost)
+                    {
+                        BonusMultiplierUpdate(ref templeMultiplier, lblTempleMultiplier, ref templeSpeed);
+                        score -= templeBonusCost;
+                        lblTempleBonusCost.Content = templeBonusCost.ToString();
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+
+            UpdateBonusButtonStatus();
+            UpdateScoreText();
+        }
+
     }
-}
+}           
