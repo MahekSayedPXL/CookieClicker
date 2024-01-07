@@ -39,7 +39,7 @@ namespace BlackJack
         //Indicating whether a golden cookie is currently active
         private bool isGoldenCookieActive = false;
 
-        double score = 999990;
+        double score = 0;
 
         int cursorCost = 15;
         int grandmaCost = 100;
@@ -104,6 +104,7 @@ namespace BlackJack
             InitializeComponent();
             UpdateScoreText();
             UpdateButtonStatus();
+            UpdateBonusButtonStatus();
 
             incomeTimer = new DispatcherTimer();
             incomeTimer.Tick += IncomeTimer_Tick;
@@ -529,7 +530,6 @@ namespace BlackJack
 
             UpdateScoreText();
             UpdateButtonStatus();
-            UpdateBonusButtonStatus();
         }
 
         /// <summary>
@@ -770,7 +770,7 @@ namespace BlackJack
         /// <param name="e">Event arguments.</param>
         private void GoldenCookieTimer_Tick(object sender, EventArgs e)
         {
-            if (random.NextDouble() < 0.3 && !isGoldenCookieActive)
+            if (random.NextDouble() < 1 && !isGoldenCookieActive)
             {
                 SpawnGoldenCookie();
             }
